@@ -10,5 +10,5 @@ Thanks to **``LegotronForce``** For LoggerLib And ParserLib
 
 Thanks to **``@Ace.#1187``** For The app icon
 
-Btw this project is not dead
-x
+Update this is still getting worked on
+in the newest build we are moving away from electron since i can't get its api to work
