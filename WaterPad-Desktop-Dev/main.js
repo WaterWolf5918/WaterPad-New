@@ -32,7 +32,6 @@ var wsServer = new ws.Server({ noServer: true });
 var prompt = require('prompt-sync')();
 var force_quit = false;
 var logger = require("./Log4Water")
-const {ipcMain} = require('electron');
 logger.start()
 
 
@@ -41,7 +40,7 @@ logger.start()
 
 let { app, BrowserWindow } = require('electron');
 const { stringify } = require('querystring');
-const { electron } = require("process");
+const ipcMain = require('electron').ipcMain
 
 const createWindow = () => {
   // Create the browser window.
@@ -49,16 +48,16 @@ const createWindow = () => {
 	width: 1280,
 	height: 720,
 	webPreferences: {
-	  preload: __dirname + "/src/desktop_1/preload.js"
+	  preload: __dirname + "/src/desktop/preload.js",
 	}
   });
 
-  mainWindow.loadFile("src/desktop_1/main_menu.html");
+  mainWindow.loadFile("src/desktop/main_menu.html");
   mainWindow.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
-	main();
+	// runserver();
   	createWindow();
   	app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
 	app.on('will-quit', () => {
@@ -70,6 +69,30 @@ app.whenReady().then(() => {
 app.on('quit', () => {
 	saveJSON()
 });
+
+ipcMain.on('server',(event,message) => {
+	if (message === true){
+		var serverstate = true
+		runserver();
+		return serverstate
+	}
+	if (message === false){
+		var serverstate = true
+		app2.close()
+	}
+	if (message === 'serverState'){
+		ipcMain.send('server',serverstate)
+	}
+})
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,7 +146,7 @@ function _() {
 
 
 
-function main() {
+function runserver() {
 	//=====================================
 	var thing = parser.getINI(__dirname + "/config.ini");
 	var port = parser.findINI(thing,"port");
@@ -133,12 +156,20 @@ function main() {
 
 
 	//WebServer======
-	runserver()
+	try {
+		app2.use(express.static(__dirname +"/src/website"));
 
-	ipcMain.on("serverstart",function(event,arg){
-		logger.log(arg)
-		logger.log(event)
-})
+		app2.get('/', (req, res) => {
+			res.sendFile(__dirname + "/src/website/index.html");
+			logger.log("Sent File To Client");
+		})
+
+		if (debug == true){
+			logger.debug("Server Port:"+ port,"");
+		}
+	} catch (err){
+		logger.error(err)
+	}
 	//WebServer======
   
   
@@ -184,21 +215,6 @@ function main() {
 	};
 
 
-
-
-function runserver(text){
-	try {
-		app2.use(express.static(__dirname +"/src/website"));
-
-		app2.get('/', (req, res) => {
-			res.sendFile(__dirname + "/src/website/index.html");
-			logger.log("Sent File To Client");
-		})
-
-	} catch (err){
-		logger.error(err)
-	}
-}
 
 
 
