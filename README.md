@@ -6,7 +6,7 @@ For normal builds go to <https://github.com/Nightowl2007W/WaterPad>
 
 **==People That Helped==**
 
-Thanks to **``LegotronForce``** For LoggerLib And ParserLib
+Thanks to **``LegotronForce``** For ParserLib
 
 Thanks to **``@Ace.#1187``** For The app icon
 
