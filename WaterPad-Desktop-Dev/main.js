@@ -17,7 +17,7 @@
 
 
 
-var parser = require("./src/imports/ParserLib");
+
 var express = require('express');
 var { exec, spawn } = require('child_process');
 var fs = require('fs');
@@ -25,7 +25,7 @@ var ws = require('ws');
 var nconf = require('nconf');
 var app2 = express();
 var wsServer = new ws.Server({ noServer: true });
-var prompt = require('prompt-sync')();
+// var prompt = require('prompt-sync')();
 var logger = require("./Log4Water")
 
 logger.start()
@@ -202,7 +202,7 @@ function _() {
 
 
 	//=====================================
-	var thing = parser.getINI(__dirname + "/config.ini");
+	// var thing = parser.getINI(__dirname + "/config.ini");
 	var port = nconf.get('port:0')
 	var debug = nconf.get('debug')
 	
