@@ -17,22 +17,24 @@
 
 
 
-// var { Logger } = require('./src/imports/LoggerLib');
 var parser = require("./src/imports/ParserLib");
 var express = require('express');
-var { exec } = require('child_process');
-var os = require('os');
+var { exec, spawn } = require('child_process');
 var fs = require('fs');
-var { json } = require('express/lib/response');
 var ws = require('ws');
 var nconf = require('nconf');
-// var logger = new Logger(true);
 var app2 = express();
 var wsServer = new ws.Server({ noServer: true });
 var prompt = require('prompt-sync')();
-var force_quit = false;
 var logger = require("./Log4Water")
+
 logger.start()
+
+
+const WebSocket = require('ws');
+const socket = new WebSocket.Server({ port: 65225 });
+logger.start()
+
 
 
 
@@ -57,7 +59,9 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-	// runserver();
+	if (nconf.get('drun') === true){
+		logger.debug(`${nconf.get('drun')}`)
+	}
   	createWindow();
   	app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
 	app.on('will-quit', () => {
@@ -81,11 +85,60 @@ ipcMain.on('server',(event,message) => {
 		app2.close()
 	}
 	if (message === 'serverState'){
-		ipcMain.send('server',serverstate)
+		if (serverstate === null){
+			var serverstate = false
+		}
+		event.sender.send = serverstate
+		console.log(`sent serverstate | ${serverstate}`)
 	}
 })
+//WebSocket
+serverState = false
+
+wsServer.on('connection', socket => {
+	socket.on('message', message => {
+		let nmessage = Number(message)
+		//converts object to number and checks the number
+		if (nmessage <= 10){
+			exec(nconf.get(`files:${message}`))
+			logger.log(`running ` + nconf.get(`files:${message}`))
+		}else{
+			if (message == "serverState5"){
+				socket.send(serverState.toString())
+				logger.debug(serverState)
+				switch (serverState){
+					case true:
+						serverState = false;
+						logger.log('Server Shuting Down');
+						web.close(() => {
+							logger.warn('Server Closed')
+						})
+						break;
+					case false:
+				 		serverState = true
+				 		logger.log('server is starting')
+						web = app2.listen(port, () => {	if (debug == true){		logger.debug("Server Port:"+ port,"");	}});
+						 break;
+					case undefined:
+						serverState = true
+						logger.log('server is starting')
+				}		
+			}
+		}
+	})
+  })
 
 
+
+
+
+  
+  const server = app2.listen(65525);
+  server.on('upgrade', (request, socket, head) => {
+	wsServer.handleUpgrade(request, socket, head, socket => {
+	  wsServer.emit('connection', socket, request)
+	})
+  })
 
 
 
@@ -146,16 +199,19 @@ function _() {
 
 
 
-function runserver() {
+
+
 	//=====================================
 	var thing = parser.getINI(__dirname + "/config.ini");
-	var port = parser.findINI(thing,"port");
-	var debug = parser.findINI(thing,"DEBUG");
-	// logger.c433();
+	var port = nconf.get('port:0')
+	var debug = nconf.get('debug')
 	
 
 
+
+
 	//WebServer======
+
 	try {
 		app2.use(express.static(__dirname +"/src/website"));
 
@@ -164,59 +220,8 @@ function runserver() {
 			logger.log("Sent File To Client");
 		})
 
-		if (debug == true){
-			logger.debug("Server Port:"+ port,"");
-		}
+
 	} catch (err){
 		logger.error(err)
 	}
-	//WebServer======
-  
-  
-  
-  
-	//WebSocket
-
-
-	  wsServer.on('connection', socket => {
-		socket.on('message', message => {
-			logger.log(message)
-				if (message==11) {
-					logger.log(nconf.get('files:1'))
-					socket.send(nconf.get('files:1'))
-					wsServer.on("connection",socket => {
-						socket.on('message', message1 => {
-							logger.log(message1);	
-							nconf.set("files:1",(message1))
-							return;
-						})
-					})
-					}
-
-				else {
-					try{
-					exec(nconf.get('files' + message));
-					logger.log(`Executed File #${message}!`);
-					} catch (err){
-						errorCheck("Somthing went wrong",err)
-					}
-				}
-		})
-	  })
-  
-	  const server = app2.listen(65525);
-	  server.on('upgrade', (request, socket, head) => {
-		wsServer.handleUpgrade(request, socket, head, socket => {
-		  wsServer.emit('connection', socket, request)
-		})
-	  })
-  
-	  app2.listen(65535);
-	};
-
-
-
-
-
-
 

@@ -34,8 +34,16 @@ body {
 	display: flex;
 }
 
-#button-text{
+.text{
 	margin-top: -0.4in;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+#button-text{
+	margin-top: -0.3in;
 	margin-left: auto;
 	margin-right: auto;
 	align-items: center;
@@ -50,8 +58,7 @@ body {
 	max-width: 800px;
 	max-height: 500px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 3.5rem;
-	text-align: center;
+    gap: 3.50rem;
 }
 
 /* .hidden{

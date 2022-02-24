@@ -25,17 +25,17 @@ exports.start = () => {
 	fs.writeFileSync(`./logs/${file}.log`, " ");
 }
 /**@param {string} logText The Text To Log*/
-exports.log = async function (logText){console.log(`${Blue}${time}${Blue}[Info]> ${Gray}${logText}`);
-stream.write(`${time2}[Info]>${logText}\n`,'utf-8')};
+exports.log = async function (logText){console.log(`${Blue}${time}${Blue}[Info]> ${Gray}${logText}`)};
+// stream.write(`${time2}[Info]>${logText}\n`,'utf-8')};
 /**@param {string} logText The Text To Log*/
-exports.warn = async function (logText){console.log(`${Yellow}${time}${Yellow}[Warn]> ${Gray}${logText}`);
-stream.write(`${time2}[Warn]>${logText}\n`,'utf-8')};
+exports.warn = async function (logText){console.log(`${Yellow}${time}${Yellow}[Warn]> ${Gray}${logText}`)};
+// stream.write(`${time2}[Warn]>${logText}\n`,'utf-8')};
 /**@param {string} logText The Text To Log*/
-exports.error = async function (logText){console.log(`${Red}${time}${Red}[Error]> ${Gray}${logText}`);
-stream.write(`${time2}[Error]>${logText}\n`,'utf-8')};
+exports.error = async function (logText){console.log(`${Red}${time}${Red}[Error]> ${Gray}${logText}`)};
+// stream.write(`${time2}[Error]>${logText}\n`,'utf-8')};
 /**@param {string} logText The Text To Log*/
-exports.debug = async function (logText){console.log(`${Green}${time}${Green}[Debug]> ${Gray}${logText}`);
-stream.write(`${time2}[Debug]>${logText}\n`,'utf-8')};
+exports.debug = async function (logText){console.log(`${Green}${time}${Green}[Debug]> ${Gray}${logText}`)};
+// stream.write(`${time2}[Debug]>${logText}\n`,'utf-8')};
 /*** @description Clears the screen using the ANSI-Escape Code* @returns {void} nothing*/
 exports.clear = async function() {console.log("\x1Bc");}
 stream.end();

@@ -10,7 +10,7 @@ function apple(button){
 		// alert(ip)
 		const sock = new WebSocket(ip);
 		sock.addEventListener('open', function (event){
-			sock.send(block)
+			sock.send(parseInt(block))
 			sock.close
 		})
 	}

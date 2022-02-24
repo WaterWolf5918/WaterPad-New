@@ -19,7 +19,9 @@ contextBridge.exposeInMainWorld(
 		receive: (point,func) => {
 			let vc = ['server','Error']
 			if (vc.includes(point)){
-				ipcRenderer.on(point,(event,args) => func(args))
+				ipcRenderer.on(point,(event,arg) => func(arg))
+				console.debug(arg)
+				return func
 			}else{
 				console.error("[IPC] Point may not be safe")
 			}
