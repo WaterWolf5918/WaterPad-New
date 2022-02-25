@@ -8,6 +8,6 @@ For normal builds go to <https://github.com/Nightowl2007W/WaterPad>
 
 Thanks to **``LegotronForce``** For Helping with the code
 
-Thanks to **``@Ace.#1187``** For The app icon
+Thanks to **``Powe#1187``** For The app icon
 
 
