@@ -26,7 +26,11 @@ contextBridge.exposeInMainWorld(
 				console.error("[IPC] Point may not be safe")
 			}
 		},
-		nconf:nconf
+		nconf:nconf, 
+		getv: () =>{
+			return process.env.npm_package_version
+			
+		},
 	}
 )
 
@@ -35,17 +39,16 @@ contextBridge.exposeInMainWorld(
 console.log(__dirname)
 
 
-
-
-
 window.addEventListener('DOMContentLoaded', () => {
-  const element = document.getElementById('path_text');
+  var element = document.getElementById('WaterPad-Text');
   if (element) {
-    element.innerText = (__dirname)
+    element.innerText = (`WaterPad - ${process.env.npm_package_version}`)
   }
-  
-  const button_2 = document.getElementById("button-2")
-	button_2.addEventListener(onclick, () => {
-		console.log("user clicked server start")
-	})
 });
+
+//   const button_2 = document.getElementById("button-2")
+// 	button_2.addEventListener(onclick, () => {
+// 		console.log("user clicked server start")
+// 	})
+
+// });

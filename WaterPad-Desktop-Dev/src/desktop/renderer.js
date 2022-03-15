@@ -1,56 +1,43 @@
+import * as test from './socket.io.js';
+import * as linut from './linit.mjs';
 
-const server = document.getElementById("button-2")
+const socket = io('ws://localhost:65525');
 
-const ip = "ws://" + '127.0.0.1' +":65525"
+socket.on('connect', () => {
+  // either with send()
+  socket.send('hello from client');
 
-
-function linux(num){
-	if (num == '2'){
-		const sock = new WebSocket(ip);
-		sock.addEventListener('open', function (event){
-			sock.send(`serverState5`)
-			sock.addEventListener('message',(event) => {
-				console.log(event)
-				if (event.data == 'false'){
-					document.getElementById('server-running').innerHTML = 'Stop Server'
-				}
-				if (event.data == 'true'){
-					document.getElementById('server-running').innerHTML = 'Start Server'
-				}
-				
-			})
-			sock.close
-		})
-	}
-}
-
-
-
-
-
-
-
-
-function apple(button){
-	const block = button
-		// alert(ip)
-		const sock = new WebSocket(ip);
-		sock.addEventListener('open', function (event){
-			sock.send(parseInt(block))
-			sock.close
-		})
-	}
-
-
-function help_info(){
-	alert("Work on this later")
-}
-
-
-
-
-$(document).ready(function(){
-    // jQuery methods go here...
-	console.log(window.myAPI)
-    console.log("test")
 });
+// const socket = test('ws://localhost:65525');
+
+let waterpadVersion = 'https://raw.githubusercontent.com/Nightowl2007W/WaterPad-New/main/WaterPad-Desktop-Dev/version.txt';
+
+function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+$('#server-button').click(function() {
+	doAction('server');
+});
+
+$('#settings-button').click(function() {
+	doAction('settings');
+});
+
+$('#help-button').click(function() {
+	doAction('help');
+});
+
+async function doAction(action) {
+	switch(action) {
+		case 'server':
+			socket.send('test')
+		break;
+
+		case 'help':
+			// Set GUI to the help menu
+		break;
+		
+		case 'settings':
+			// Set GUI to settings :)
+		break;
+	}
+}
