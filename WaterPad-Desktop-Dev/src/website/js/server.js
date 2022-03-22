@@ -6,5 +6,6 @@ const socket = io('ws://localhost:65525');
 
 
 function apple(button) {
-
-}
+	socket.on('connect',() =>{
+		socket.send(button)
+})}

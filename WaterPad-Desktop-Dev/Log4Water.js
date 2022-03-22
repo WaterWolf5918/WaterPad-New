@@ -1,11 +1,11 @@
-
+//@ts-check
 const fs = require('fs');
 let fileName = '';
 
 const colors = {
 	red: "\u001b[31m",
 	green: "\u001b[32m",
-	yellow: "\u001b[33m",
+	// yellow: "\u001b[33m",
 	blue: "\u001b[38;5;27m",
 	gray: "\u001b[38;5;250m",
 	darkGray: "\u001b[25;1m",
@@ -75,7 +75,7 @@ function debug(text) {
 
 function clear() {
 	console.clear();
-	fs.appendFileSync('./logs/' + filename, `${getTime().fileTime} [SYSTEM] Cleared the console.`);
+	fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [SYSTEM] Cleared the console.`);
 }
 
 module.exports = { start, log, warn, error, debug, clear };

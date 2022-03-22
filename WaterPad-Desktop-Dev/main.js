@@ -60,7 +60,9 @@ io.on("connection", (socket) => {
 	  });
 });
 
-
+if (nconf.get('debug')){
+	logger.debug('Server is running on \n http://localhost:65235/')
+}
 
 
 
@@ -100,7 +102,7 @@ app.on('quit', () => {
 });
 
 // Sends files to the client
-webserver.use(express.static(__dirname + "/src/website"));
+webserver.use(express.static(__dirname + "/src/website/"));
 
 // This is so we don't have to use `localhost/index.html`, but instead `localhost/`
 webserver.get('/', (req, res) => {
