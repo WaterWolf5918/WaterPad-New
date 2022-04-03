@@ -3,6 +3,6 @@ Waterpad is an application that allows for you to do stuff on your computer, thr
 
 --People that helped--
 
-Thanks to **``LegotronForce``** For Helping with the code
+Thanks to [Legotronforce](https://github.com/LegotronForce) For Helping with the code
 
 Thanks to **``Powe#1187``** For The app icon
