@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+	<head>
+		<title>WaterPad</title>
+		<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./css/style.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script type="module" src="./socket.io.js"></script>
+		<meta charset="UTF-8">
+	</head>
+
+	<body>
+		<h1 id="WaterPad-Text">WaterPad - #.#.#</h1>
+
+		<div id="menu">
+			<button class="server menu-choice" id="server-button">
+				<img id="server-img" class="show" src="image/image-2.png"/>
+				<p id="server-running">Server Info</p>
+			</button>
+
+			<button class="setting menu-choice" id="settings-button">
+				<img id="settings-img" class="show" src="image/image-3.png">
+				<p id="settings-text">Settings</p>
+			</button>
+
+			<button class="help menu-choice" id="help-button">
+				<img id="help-img" class="show" src="image/image-1.png"/>
+				<p id="help-text" class="">Help</p>
+			</button>
+		</div>
+
+		<!-- <div id='updateNote' class='hidden'>
+			<h3 onclick='closeUpdate()' id='x'>X</h3>
+			<h3 id='updateMsg'>There is a new version of WaterPad. </h3>
+			<div id='updatebutton' class="hidden">
+				<button id='updatebutton2' onclick="console.log('test')">Download</button>
+				
+			</div>
+		</div> -->
+
+		<script type="module" src="./linit.mjs"></script>
+		<script type="module" src="./renderer.js"></script>
+	</body>
+</html>

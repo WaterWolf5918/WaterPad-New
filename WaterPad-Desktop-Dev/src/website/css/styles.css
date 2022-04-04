@@ -3,7 +3,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-#button-1 {
+button-list{
 	min-width: 125px;
 	min-height: 125px;
 	width: auto;
@@ -12,125 +12,28 @@ body {
 	max-height: 128px;
 	margin-left: 25;
 	margin-right: 25;
-	margin-top: 25;}
-#button-2 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-3 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-4 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-5 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-6 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-7 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-8 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-9 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-10 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-11 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-12 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
-#button-13 {
-	min-width: 125px;
-	min-height: 125px;
-	width: auto;
-	height: auto;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 25;
-	margin-right: 25;
-	margin-top: 25;}
+	margin-top: 25;
+}
 
+
+
+.button {
+	max-width: 248px;
+	max-height: 128px;
+	min-width: 125px;
+	min-height: 125px;
+	width: auto;
+	height: auto;
+
+	margin-left: 25;
+	margin-right: 25;
+	margin-top: 25;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,5 +1,4 @@
 {
-  "debug": true,
   "files": [
     "File Paths",
     "C:\\users\\placeholder\\desktop\\file       PLACEHOLDER",
@@ -14,8 +13,7 @@
     "FILE9",
     "FILE10"
   ],
-  "drun": true,
-  "port": [
-    "65235"
-  ]
+  "debug": true,
+  "port": "65235",
+  "wport": "65236"
 }

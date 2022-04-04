@@ -1,76 +1,79 @@
 {
-  "name": "waterpad",
-  "version": "0.2.5",
-  "description": "WaterPad",
-  "main": "main.js",
-  "scripts": {
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "start": "electron .",
-    "dist": "electron-builder",
-    "test": "node ./test.js"
-  },
-  "build": {
-    "appId": "WaterPad",
-    "compression": null,
-    "win": {
-      "target": "nsis",
-      "asarUnpack": [
-        "files"
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "runAfterFinish": false,
-      "allowToChangeInstallationDirectory": true,
-      "installerHeader": "build\\icon.ico"
-    }
-  },
-  "author": "WaterWolf5918",
-  "license": "MIT",
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
-    "express": "^4.17.3",
-    "nconf": "^0.11.3",
-    "ws": "^8.2.3"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.61",
-    "@electron-forge/maker-deb": "^6.0.0-beta.61",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
-    "@electron-forge/maker-zip": "^6.0.0-beta.61",
-    "electron": "^16.0.0",
-    "electron-builder": "^22.13.1"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "ui": {
-              "chooseDirectory": true
-            },
-            "name": "waterpad_desktop"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+	"name": "waterpad",
+	"version": "0.2.6",
+	"description": "WaterPad",
+	"main": "main.js",
+	"scripts": {
+	  "package": "electron-forge package",
+	  "make": "electron-forge make",
+	  "start": "electron .",
+	  "dist": "electron-builder",
+	  "test": "node ./test.js"
+	},
+	"build": {
+	  "appId": "WaterPad",
+	  "compression": null,
+	  "win": {
+		"target": "nsis",
+		"asarUnpack": [
+		  "files"
+		]
+	  },
+	  "nsis": {
+		"oneClick": false,
+		"runAfterFinish": false,
+		"allowToChangeInstallationDirectory": true,
+		"installerHeader": "build\\icon.ico"
+	  }
+	},
+	"author": "WaterWolf5918",
+	"license": "MIT",
+	"dependencies": {
+	  "cors": "^2.8.5",
+	  "electron": "^17.1.2",
+	  "express": "^4.17.3",
+	  "nconf": "^0.11.3",
+	  "socket.io": "^4.4.1",
+	  "ws": "^8.2.3"
+	},
+	"devDependencies": {
+	  "@electron-forge/cli": "^6.0.0-beta.61",
+	  "@electron-forge/maker-deb": "^6.0.0-beta.61",
+	  "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+	  "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+	  "@electron-forge/maker-zip": "^6.0.0-beta.61",
+	  "electron-builder": "^22.13.1",
+	  "electron-reload": "^2.0.0-alpha.1"
+	},
+	"config": {
+	  "forge": {
+		"packagerConfig": {},
+		"makers": [
+		  {
+			"name": "@electron-forge/maker-squirrel",
+			"config": {
+			  "ui": {
+				"chooseDirectory": true
+			  },
+			  "name": "waterpad_desktop"
+			}
+		  },
+		  {
+			"name": "@electron-forge/maker-zip",
+			"platforms": [
+			  "darwin"
+			]
+		  },
+		  {
+			"name": "@electron-forge/maker-deb",
+			"config": {}
+		  },
+		  {
+			"name": "@electron-forge/maker-rpm",
+			"config": {}
+		  }
+		]
+	  }
+	}
   }
-}
+  
