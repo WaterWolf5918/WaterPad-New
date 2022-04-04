@@ -5,8 +5,10 @@ const socket = io('ws://localhost:65525');
 
 socket.on('connect', () => {
   // either with send()
-  socket.send('hello from client');
-
+  socket.emit('connected', 'Desktop Manager');
+  socket.on("message", (...args) => {
+	console.log(args);
+});
 });
 // const socket = test('ws://localhost:65525');
 
@@ -26,10 +28,15 @@ $('#help-button').click(function() {
 	doAction('help');
 });
 
+
+// let note = new linut.Notification("test","test");
+// linut.pushNotification(note);
+
+
 async function doAction(action) {
 	switch(action) {
 		case 'server':
-			socket.send('test')
+			socket.send('server info')
 		break;
 
 		case 'help':

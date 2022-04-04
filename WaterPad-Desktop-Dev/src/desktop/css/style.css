@@ -60,6 +60,10 @@ button {
 	visibility: hidden;
 }
 
+.Note{
+
+}
+
 @keyframes warning {
 	0% {
 	  	opacity: 0;

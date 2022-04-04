@@ -55,27 +55,32 @@ function start() {
 
 function log(text) {
 	console.log(`${colors.blue}${getTime().coloredTime} ${colors.blue}[INFO] ${colors.gray}${text}`);
-	fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [INFO] ${text}\n`);
+	//fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [INFO] ${text}\n`);
 }
 
 function warn(text) {
 	console.log(`${colors.blue}${getTime().coloredTime} ${colors.yellow}[WARN] ${colors.gray}${text}`);
-	fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [WARN] ${text}\n`);
+	//fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [WARN] ${text}\n`);
 }
 
 function error(text) {
 	console.log(`${colors.blue}${getTime().coloredTime} ${colors.red}[ERR] ${colors.gray}${text}`);
-	fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [ERR] ${text}\n`);
+	//fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [ERR] ${text}\n`);
 }
 
 function debug(text) {
 	console.log(`${colors.blue}${getTime().coloredTime} ${colors.green}[DEBUG] ${colors.gray}${text}`);
-	fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [DEBUG] ${text}\n`);
+	//fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [DEBUG] ${text}\n`);
 }
 
 function clear() {
 	console.clear();
-	fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [SYSTEM] Cleared the console.`);
+	//fs.appendFileSync('./logs/' + fileName, `${getTime().fileTime} [SYSTEM] Cleared the console.`);
 }
+
+
+
+
+
 
 module.exports = { start, log, warn, error, debug, clear };

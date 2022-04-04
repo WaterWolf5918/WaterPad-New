@@ -29,6 +29,7 @@
   "author": "WaterWolf5918",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "electron": "^17.1.2",
     "express": "^4.17.3",
     "nconf": "^0.11.3",

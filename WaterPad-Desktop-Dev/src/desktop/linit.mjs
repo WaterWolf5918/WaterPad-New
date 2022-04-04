@@ -1,3 +1,5 @@
+
+
 /** Adds a notification to the notification list
  * @param {Notification} notification The notification to push onto the notification list
 */
@@ -7,9 +9,15 @@ export function pushNotification(notification) {
         * Add it to an array to use later
         * Idk :=(
     **/
-    
+    console.log(notification);
+	let note = notification[0];
+	let note2 = JSON.stringify(notification[0])
+	const heading = document.createElement("h1");
+	const heading_text = document.createTextNode(note2.toString());
+	heading.appendChild(heading_text);
+	document.body.appendChild(heading);
 }
-
+document.getElementById('updateNote').className = "Note"
 
 // $(document).ready(function(){
 // 	// document.getElementById('updateNote').className = "Note"; 

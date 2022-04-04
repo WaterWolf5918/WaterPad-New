@@ -37,32 +37,60 @@ const webserver = express();
 
 const logger = require("./Log4Water");
 const linin = require('./linin');
-
+nconf.use('file', { file: './config.json' });
 // *** GET CONFIG *** \\
 const debug = nconf.get('debug');
 const port = nconf.get('port');
 
 // *** INIT *** \\
-const io = new Server(65525);
+const io = new Server(65525,{  cors: {
+    origin: "*",
+    methods: "*"
+  }});
+const cors = require('cors');
+
+webserver.all('/*', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "*");
+	next();
+  });
+
+
 
 io.on("connection", (socket) => {
+	// console.log(socket)
 	// send a message to the client
-	socket.emit("hello from server", 1, "2", { 3: Buffer.from([4]) });
-  
+	socket.emit('connected', 'server');
 	// receive a message from the client
-	socket.on("message", (...args) => {
-		logger.log(args);
+	socket.on("message", (data) => {
+		logger.log(JSON.stringify(data));
 	});
+	socket.on('buttonClick', (data) => {
+		// logger.log(`got buttonClick: ${data}`);
+		logger.debug(`Num: ${JSON.stringify(data).valueOf()}`);
+		let num = JSON.stringify(data).valueOf();
+		logger.debug(nconf.get(`files:${num}`));
+		exec(nconf.get(`files:${num}`),(err,stdout,stderr) => {
+			if (debug){
+				logger.log(stdout);
+				logger.log(stderr);
+			}
+			if(err) {
+				logger.error(err);
+			}
+		});
+	})
+
+	socket.on('connected', (data) => {
+		logger.log(`[Socket.Connect] ${data} connected ${socket.id}`);
+	})
 
 
-	socket.onAny((event, ...args) => {
-		console.log(`got ${event}`);
-	  });
 });
 
-if (nconf.get('debug')){
-	logger.debug('Server is running on \n http://localhost:65235/')
-}
+// if (nconf.get('debug')){
+// 	logger.debug('Server is running on \n http://localhost:65235/')
+// }
 
 
 
@@ -92,8 +120,10 @@ app.whenReady().then(() => {
 	app.on('will-quit', () => {
 		if (process.platform !== 'darwin') app.quit();
 	});
-
+	// webserver.use(cors());
 	webserver.listen(65235);
+	// webserver.use(cors())
+	logger.log("Client is running on \n http://localhost:65235/");
 });
 
 
@@ -101,11 +131,23 @@ app.on('quit', () => {
 	linin.saveJSON();
 });
 
+
+
+
+
 // Sends files to the client
-webserver.use(express.static(__dirname + "/src/website/"));
+webserver.use(express.static(__dirname + "/src/website"));
 
 // This is so we don't have to use `localhost/index.html`, but instead `localhost/`
-webserver.get('/', (req, res) => {
-	res.sendFile(__dirname + "/src/website/index.html"); 
+// webserver.get('/',function (req, res) {
+// 	res.sendFile(__dirname + "/src/website/index.html");
+// 	logger.log("Sent file to client");
+// })
+
+
+
+webserver.get('/',(req, res) => {
+	res.sendFile(__dirname + "/src/website/index.html");
+	// res.sendFile(__dirname + "/src/website/css/");
 	logger.log("Sent file to client");
 })
