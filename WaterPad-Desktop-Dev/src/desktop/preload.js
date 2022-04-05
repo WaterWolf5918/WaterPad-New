@@ -2,7 +2,7 @@ const nconf = require('nconf');
 nconf.use('file', { file: './config.json' });
 nconf.load();
 
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer,dialog } = require('electron')
 var ipc = require('electron');
 
 contextBridge.exposeInMainWorld(
@@ -29,8 +29,8 @@ contextBridge.exposeInMainWorld(
 		nconf:nconf, 
 		getv: () =>{
 			return process.env.npm_package_version
-			
 		},
+
 	}
 )
 
@@ -39,11 +39,18 @@ contextBridge.exposeInMainWorld(
 console.log(__dirname)
 
 
+
+
+
+
 window.addEventListener('DOMContentLoaded', () => {
   var element = document.getElementById('WaterPad-Text');
   if (element) {
     element.innerText = (`WaterPad - ${process.env.npm_package_version}`)
   }
+
+
+
 });
 
 //   const button_2 = document.getElementById("button-2")

@@ -3,10 +3,11 @@
 	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
 	<head>
 		<title>WaterPad</title>
+		<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
 		<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="./css/style.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script type="module" src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+		<script src="./renderer.js"></script>
 		<meta charset="UTF-8">
 	</head>
 
@@ -20,7 +21,7 @@
 			</button>
 
 			<button class="setting menu-choice" id="settings-button">
-				<img id="settings-img" class="show" src="image/image-3.png">
+				<img id="settings-img" class="show" src="image/image-3.png" onclick="location.href='Blocks.html'">
 				<p id="settings-text">Settings</p>
 			</button>
 
@@ -39,7 +40,7 @@
 			</div>
 		</div> -->
 
-		<script type="module" src="./linit.mjs"></script>
-		<script type="module" src="./renderer.js"></script>
+		<!-- <script type="module" src="./linit.mjs"></script> -->
+		<script src="./renderer.js"></script>
 	</body>
 </html>

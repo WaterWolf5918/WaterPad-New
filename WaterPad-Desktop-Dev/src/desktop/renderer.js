@@ -1,11 +1,10 @@
-import * as test from './socket.io.js';
-import * as linut from './linit.mjs';
 
-const socket = io('ws://localhost:65525');
+
+let socket = io('ws://localhost:65525');
 
 socket.on('connect', () => {
   // either with send()
-  socket.emit('connected', 'Desktop Manager');
+  socket.emit('connected', 'Desktop Manager Editor');
   socket.on("message", (...args) => {
 	console.log(args);
 });
@@ -22,15 +21,45 @@ $('#server-button').click(function() {
 
 $('#settings-button').click(function() {
 	doAction('settings');
+
 });
 
 $('#help-button').click(function() {
 	doAction('help');
 });
 
+function apple(num){
+	document.getElementById('picker-button-list').classList.replace('hidden','show');
+	document.getElementById('button-list').classList.replace('button-list','hidden');
+	// let socket = io('ws://localhost:65525');
+	// socket.on('connect',() => {
+	// 	socket.emit('newFilePath', num);
+	// 	console.log(num)
+	// })
+}
 
 // let note = new linut.Notification("test","test");
 // linut.pushNotification(note);
+
+function test(num){
+	console.log('test' + num);
+}
+
+function picker(num){
+	document.getElementById('picker-button-list').classList.add('hidden');
+	document.getElementById('button-list').classList.replace('hidden','button-list');
+}
+
+
+
+function hellotest(num){
+	let socket = io('ws://localhost:65525');
+	socket.on('connect',() => {
+		socket.emit('newImage', num);
+		console.log(num)
+	})
+}
+
 
 
 async function doAction(action) {
@@ -41,6 +70,7 @@ async function doAction(action) {
 
 		case 'help':
 			// Set GUI to the help menu
+
 		break;
 		
 		case 'settings':

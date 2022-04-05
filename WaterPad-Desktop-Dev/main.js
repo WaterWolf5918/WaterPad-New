@@ -27,16 +27,18 @@
 
 
 //init
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { exec, spawn } = require('child_process');
 const fs = require('fs');
 const nconf = require('nconf');
 const express = require('express');
 const { Server } = require('socket.io');
 const webserver = express();
-
 const logger = require("./Log4Water");
 const linin = require('./linin');
+const {dialog} = require('electron');
+
+
 nconf.use('file', { file: './config.json' });
 // *** GET CONFIG *** \\
 const debug = nconf.get('debug');
@@ -48,6 +50,8 @@ const io = new Server(65525,{  cors: {
     methods: "*"
   }});
 const cors = require('cors');
+const { electron } = require('process');
+const path = require('path');
 
 webserver.all('/*', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -69,21 +73,15 @@ io.on("connection", (socket) => {
 		// logger.log(`got buttonClick: ${data}`);
 		logger.debug(`Num: ${JSON.stringify(data).valueOf()}`);
 		let num = JSON.stringify(data).valueOf();
-		logger.debug(nconf.get(`files:${num}`));
-		exec(nconf.get(`files:${num}`),(err,stdout,stderr) => {
-			if (debug){
-				logger.log(stdout);
-				logger.log(stderr);
-			}
-			if(err) {
-				logger.error(err);
-			}
-		});
+		var file = nconf.get(`files:${num}`);
+		spawn(file);
+		// spawn(`cmd.exe`,['/c','start' + '"' + file + '"']);
 	})
 
 	socket.on('connected', (data) => {
 		logger.log(`[Socket.Connect] ${data} connected ${socket.id}`);
 	})
+
 
 
 });
@@ -124,12 +122,58 @@ app.whenReady().then(() => {
 	webserver.listen(65235);
 	// webserver.use(cors())
 	logger.log("Client is running on \n http://localhost:65235/");
+	io.on("connection", (socket) => {
+		socket.on('newImage', (data) => {
+			dialog.showOpenDialog({
+				title: 'Select an image',
+				filters: [
+					{ name: 'Images', extensions: ['png']},		
+				],
+				properties: ['openFile']
+			  }).then(result => {
+				console.log(result.canceled)
+				console.log(JSON.stringify(result.filePaths[0]))
+				if(!result.canceled) {
+					fs.copyFileSync(`${result.filePaths[0]}`,__dirname + `/src/website/image/image-${data}.png`);
+				}
+			  }).catch(err => {
+				console.log(err)
+			  })
+		})
+		socket.on('newFilePath', (data) => {
+			dialog.showOpenDialog({
+				properties: ['openFile', 'multiSelections'],
+			  }).then(result => {
+				console.log(result.canceled)
+				if(!result.canceled) {
+					let file = JSON.stringify(result.filePaths[0])
+					let file2 = file.replace(/\\\\/g, '/');
+					logger.debug(`New File Path: ${file2.toString()}`)
+					
+					nconf.set(`files:${data}`,result.filePaths[0]);
+					linin.saveJSON()
+				}
+			  }).catch(err => {
+				logger.error(err)
+			  })
+		})
+	});
+
 });
 
+
+// app.on('ready',() => {
+// 	socket.on('any',(data) => {
+// 		console.log(data)
+// 	})
+// })
 
 app.on('quit', () => {
 	linin.saveJSON();
 });
+
+
+
 
 
 
@@ -145,9 +189,9 @@ webserver.use(express.static(__dirname + "/src/website"));
 // })
 
 
-
 webserver.get('/',(req, res) => {
 	res.sendFile(__dirname + "/src/website/index.html");
 	// res.sendFile(__dirname + "/src/website/css/");
 	logger.log("Sent file to client");
 })
+
