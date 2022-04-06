@@ -1,5 +1,9 @@
-# WaterPad
-Waterpad is an application that allows for you to do stuff on your computer, through other devices, such as your phone. It was meant as an alternative to a streamer pad, and was created by WaterWolf. Nostalgia3 also helped with formatting and making the code work better.
+#WaterPad is a app that lets you control your applications. Currently in development.
+
+Made by: WaterWolf5918
+
+If you have any questions, Please feel free to join the discord.
+https://discord.gg/DYsdj72CSm
 
 --People that helped--
 
