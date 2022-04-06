@@ -38,6 +38,17 @@ const logger = require("./Log4Water");
 const linin = require('./linin');
 const {dialog} = require('electron');
 
+var os = require('os');
+
+var networkInterfaces = os.networkInterfaces();
+
+if (networkInterfaces.Ethernet[1].address){
+	global.ip = networkInterfaces.Ethernet[1].address;
+}else{global.ip = networkInterfaces['Wi-Fi'][1].address}
+
+
+
+
 
 nconf.use('file', { file: './config.json' });
 // *** GET CONFIG *** \\
@@ -82,7 +93,14 @@ io.on("connection", (socket) => {
 		logger.log(`[Socket.Connect] ${data} connected ${socket.id}`);
 	})
 
-
+	socket.on('serverInfo', (data) => {
+		logger.log(`[Socket.Connect] ${data} connected ${socket.id}`);
+		socket.emit('serverInfo', {
+			"ip": global.ip,
+			"port": "65235",
+			"status": "0.3.0"
+		})
+	})
 
 });
 
@@ -105,7 +123,7 @@ const createWindow = function() {
   	});
 
 	mainWindow.loadFile("src/desktop/index.html");
-
+	mainWindow.setIcon(`${__dirname}/build/icon.ico`);
 	if(debug) {
 		mainWindow.webContents.openDevTools();
 	};
@@ -162,6 +180,8 @@ app.whenReady().then(() => {
 });
 
 
+
+
 // app.on('ready',() => {
 // 	socket.on('any',(data) => {
 // 		console.log(data)
@@ -190,7 +210,7 @@ webserver.use(express.static(__dirname + "/src/website"));
 
 
 webserver.get('/',(req, res) => {
-	res.sendFile(__dirname + "/src/website/index.html");
+	res.sendFile(__dirname + "/src/website/");
 	// res.sendFile(__dirname + "/src/website/css/");
 	logger.log("Sent file to client");
 })

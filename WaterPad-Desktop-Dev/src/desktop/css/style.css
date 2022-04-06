@@ -79,3 +79,18 @@ button {
 		top: 4rem;
 	}
 }  
+#server-info{
+	display: flex;
+}
+
+#showi{
+	display: inline-block;
+}
+
+#server-info-text {
+	display: inline-block;
+	position: absolute;
+	align-items: right;
+	justify-content: right;
+	left: 20%;
+}

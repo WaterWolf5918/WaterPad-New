@@ -7,7 +7,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="./css/style.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="./renderer.js"></script>
+
 		<meta charset="UTF-8">
 	</head>
 
@@ -15,10 +15,22 @@
 		<h1 id="WaterPad-Text">WaterPad - #.#.#</h1>
 
 		<div id="menu">
-			<button class="server menu-choice" id="server-button">
-				<img id="server-img" class="show" src="image/image-2.png"/>
-				<p id="server-running">Server Info</p>
-			</button>
+			<div id="server-info">
+				<button class="server menu-choice" id="server-button">
+					<img id="server-img" class="show" src="image/image-2.png"/>
+					<p id="server-running">Server Info</p>
+				</button>
+				<div id="server-info-text" class="hidden">
+					<p id="server-info-text-1">Server IP:</p>
+					<p id="server-info-text-2">Server Port:</p>
+					<p id="server-info-text-3">Server Status:</p>
+				</div>
+			</div>
+
+
+
+
+
 
 			<button class="setting menu-choice" id="settings-button">
 				<img id="settings-img" class="show" src="image/image-3.png" onclick="location.href='Blocks.html'">
@@ -30,6 +42,13 @@
 				<p id="help-text" class="">Help</p>
 			</button>
 		</div>
+
+
+
+
+
+
+
 
 		<!-- <div id='updateNote' class='hidden'>
 			<h3 onclick='closeUpdate()' id='x'>X</h3>
