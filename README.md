@@ -9,4 +9,4 @@ https://discord.gg/DYsdj72CSm
 
 Thanks to [Legotronforce](https://github.com/LegotronForce) For Helping with the code
 
-Thanks to [PoweyDev] For The app icon and creating soical media
+Thanks to [PoweyDev](https://github.com/PoweyDev) For The app icon and creating soical media
