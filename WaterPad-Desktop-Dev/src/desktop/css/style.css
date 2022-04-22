@@ -23,7 +23,22 @@ body {
 	color: white;
 	font-family: Mukta, Helvetica, sans-serif;
 	font-size: 1rem;
+	overflow: hidden;
 }
+
+.titlebar {
+	left: -1px;
+	top: 3px;
+	height: 22px;
+	width: 100%;
+	outline: 2px solid #2f3241;
+	background: linear-gradient(to bottom,var(--clr-gray300),var(--clr-gray400),var(--clr-gray500),var(--clr-gray600),var(--clr-gray700));
+	background-color: rgb(15, 15, 15);	
+
+	position: fixed
+  }
+
+
 
 
 button {

@@ -6,8 +6,21 @@
 		<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
 		<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/titlebar.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<div class="Menu-Bar">
+			<link rel="stylesheet" href="./css/titlebar.css">
+			<div class="titlebar"></div>
+			<div class="titlebar2"></div>
+			<div id="Exit-button" onclick="titlebar('exit')"></div>
+			<div id="Max-button" onclick="titlebar('max')"></div>
+			<div id="Min-button" onclick="titlebar('min')"></div>
+			<div id="Back-button" onclick="history.back()"></div>
+		</div>
 
+
+
+		
 		<meta charset="UTF-8">
 	</head>
 
@@ -38,7 +51,7 @@
 			</button>
 
 			<button class="help menu-choice" id="help-button">
-				<img id="help-img" class="show" src="image/image-1.png"/>
+				<img id="help-img" class="show" src="image/image-1.png"onclick="location.href='help.html'"/>
 				<p id="help-text" class="">Help</p>
 			</button>
 		</div>

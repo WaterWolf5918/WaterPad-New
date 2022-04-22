@@ -17,19 +17,31 @@
 
 <html lang="en">
     <head>
+		<link rel="stylesheet" href="./css/style2.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <title>WaterPad Desktop Edit Mode</title>
+		<div class="Menu-Bar">
+			<link rel="stylesheet" href="./css/titlebar.css">
+			<div class="titlebar"></div>
+			<div class="titlebar2"></div>
+			<div id="Exit-button" onclick="titlebar('exit')"></div>
+			<div id="Max-button" onclick="titlebar('max')"></div>
+			<div id="Min-button" onclick="titlebar('min')"></div>
+			<div id="Back-button" onclick="history.back()"></div>
+		</div>
+
     </head>
     <body>
+		
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
 		<script src="./renderer.js"></script>
-		<style src="./css/style2.css"></style>
-        <h1 id="title" class="center">WaterPad Edit Mode</h1>
+        <h1 class="title1">WaterPad Edit Mode</h1>
         <h3 id="title">Version <strong>0.2.0</strong></h3>
-        
+
+
         <div id="button-list" class="button-list">
             <img src="http://localhost:65235/image/image-0.png" alt="1" class="button" id="btn" onclick="apple(0)">
             <img src="http://localhost:65235/image/image-1.png" alt="2" class="button" onclick="apple(1)">
@@ -56,63 +68,7 @@
 </html>
 
 
-<style>
-	body {
-	background-color: rgb(0, 0, 0); color:rgb(255, 255, 255);
-	font-family: Arial, Helvetica, sans-serif;
-}
 
-.button-list {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	width: auto;
-  	height: auto;
-	gap: 15px;
-}
-
-.picker-button{
-	background: linear-gradient(to bottom,rgb(255,255,255),rgb(175,175,175));
-	width: 150px;
-	height: 35px;
-	text-align: center;
-	justify-content: center;
-	font-size: larger;
-	display: flex;
-	margin-bottom: 5px;
-}
-.picker-button:hover{
-	background: linear-gradient(to bottom,rgb(175,175,175),rgb(200,200,200));
-	transform: scale(1.05);
-}
-
-.button {
-	min-width: 128px;
-	min-height: 128px;
-	width: 128px;
-	height: 128px;
-	max-width: 128px;
-	max-height: 128px;
-	margin-left: 15px;
-	margin-right: 15px;
-	margin-top: 15px;
-}
-
-.button:hover {
-	transform: scale(1.09);
-}
-
-.hidden {
-	display: none;
-}
-
-.show{
-	display: all;
-}
-
-</style>
 
 
 <!-- <script type="module">

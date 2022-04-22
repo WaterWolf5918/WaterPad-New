@@ -25,22 +25,36 @@
                                                                 ░      
 */
 
+//pre-init
+console.log(`Getting Directories \nPlease Wait\n`)
+const mainDir = __dirname.split('src')[0].toString()
+const importsDir = `${__dirname.split('src')[0].toString()}libs/`
+const src = `${__dirname.split('src')[0].toString()}src/`
+
+console.log(`\u001b[37;1mMainDir \u001b[32mOK\u001b[37;1m |\u001b[36m${mainDir}\u001b[0m `)
+console.log(`\u001b[37;1mImportsDir \u001b[32mOK\u001b[37;1m |\u001b[36m${importsDir}\u001b[0m `)
+console.log(`\u001b[37;1mSorceDir \u001b[32mOK\u001b[37;1m |\u001b[36m${src}\u001b[0m `)
+
+//pre-init
+
+
 
 //init
-const { app, BrowserWindow, ipcMain } = require('electron');
+
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const { exec, spawn } = require('child_process');
 const fs = require('fs');
 const nconf = require('nconf');
 const express = require('express');
 const { Server } = require('socket.io');
 const webserver = express();
-const logger = require("./Log4Water");
-const linin = require('./linin');
-const {dialog} = require('electron');
+const logger = require(`${importsDir}Log4Water`);
+const linin = require(`${importsDir}linin`);
+
 
 var os = require('os');
 
-var networkInterfaces = os.networkInterfaces();
+const networkInterfaces = os.networkInterfaces();
 
 if (networkInterfaces.Ethernet[1].address){
 	global.ip = networkInterfaces.Ethernet[1].address;
@@ -50,19 +64,21 @@ if (networkInterfaces.Ethernet[1].address){
 
 
 
-nconf.use('file', { file: './config.json' });
+
+
+nconf.use('file', { file:`${mainDir}config\\config.json` });
 // *** GET CONFIG *** \\
 const debug = nconf.get('debug');
 const port = nconf.get('port');
-
+console.log(debug)
 // *** INIT *** \\
+
+//Socket.Io Server\\
 const io = new Server(65525,{  cors: {
     origin: "*",
     methods: "*"
   }});
-const cors = require('cors');
-const { electron } = require('process');
-const path = require('path');
+// ***Socket.Io Server*** \\
 
 webserver.all('/*', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -71,7 +87,7 @@ webserver.all('/*', function(req, res, next) {
   });
 
 
-
+//Socket.io event handler\\
 io.on("connection", (socket) => {
 	// console.log(socket)
 	// send a message to the client
@@ -86,7 +102,7 @@ io.on("connection", (socket) => {
 		let num = JSON.stringify(data).valueOf();
 		var file = nconf.get(`files:${num}`);
 		spawn(file);
-		// spawn(`cmd.exe`,['/c','start' + '"' + file + '"']);
+		// spzawn(`cmd.exe`,['/c','start' + '"' + file + '"']);
 	})
 
 	socket.on('connected', (data) => {
@@ -101,45 +117,70 @@ io.on("connection", (socket) => {
 			"status": "0.3.0"
 		})
 	})
+	socket.on('menu-close', (data) => {
+		logger.log(`[menu] ${data}`);
+		app.quit();
+	})
 
 });
 
-// if (nconf.get('debug')){
-// 	logger.debug('Server is running on \n http://localhost:65235/')
-// }
+// ***Socket.io event handler*** \\
+
 
 
 
 
 
 const createWindow = function() {
-  	// Create the browser window.
+	
+  	// Create the browser window.x
   	const mainWindow = new BrowserWindow({
 		width: 1280,
 		height: 720,		
 		minWidth: 480,
 		minHeight: 480,
-		webPreferences: {preload: __dirname + "/src/desktop/preload.js"}
+		webPreferences: {
+			preload: `${src}/desktop/preload.js`,
+			nodeIntegration: false,
+			contextIsolation: true,
+			
+		},
+		frame: false,
   	});
 
-	mainWindow.loadFile("src/desktop/index.html");
-	mainWindow.setIcon(`${__dirname}/build/icon.ico`);
-	if(debug) {
-		mainWindow.webContents.openDevTools();
-	};
+	mainWindow.loadFile(`${src}/desktop/index.html`);
+	mainWindow.setIcon(`${mainDir}/build/icon.ico`);
+	// if(debug) {
+	// 	mainWindow.webContents.openDevTools();
+	// };
+	io.on('connection', (socket) => {
+		socket.on('titlebar', (data) => {
+			switch(data){
+				case 'min':
+					mainWindow.minimize();
+					break;
+				case 'max':
+					if (mainWindow.isMaximized()) {
+						mainWindow.unmaximize();
+					}else{mainWindow.maximize();}
+					break;
+				case 'exit':
+					app.quit()
+					break;
+			}
+			logger.debug(data)
+		})
+	})
 }
 
 app.whenReady().then(() => {
   	createWindow();
-
   	app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
 	app.on('will-quit', () => {
 		if (process.platform !== 'darwin') app.quit();
 	});
-	// webserver.use(cors());
 	webserver.listen(65235);
-	// webserver.use(cors())
-	logger.log("Client is running on \n http://localhost:65235/");
+	logger.log(`WebApp Running on http://${global.ip}:65235/`);
 	io.on("connection", (socket) => {
 		socket.on('newImage', (data) => {
 			dialog.showOpenDialog({
@@ -152,7 +193,7 @@ app.whenReady().then(() => {
 				console.log(result.canceled)
 				console.log(JSON.stringify(result.filePaths[0]))
 				if(!result.canceled) {
-					fs.copyFileSync(`${result.filePaths[0]}`,__dirname + `/src/website/image/image-${data}.png`);
+					fs.copyFileSync(`${result.filePaths[0]}`,__dirname + `WebApp/image/image-${data}.png`);
 				}
 			  }).catch(err => {
 				console.log(err)
@@ -176,7 +217,6 @@ app.whenReady().then(() => {
 			  })
 		})
 	});
-
 });
 
 
@@ -200,18 +240,18 @@ app.on('quit', () => {
 
 
 // Sends files to the client
-webserver.use(express.static(__dirname + "/src/website"));
+webserver.use(express.static(`${src}/WebApp`));
 
 // This is so we don't have to use `localhost/index.html`, but instead `localhost/`
 // webserver.get('/',function (req, res) {
-// 	res.sendFile(__dirname + "/src/website/index.html");
+// 	res.sendFile(__dirname + "/src/WebApp/index.html");
 // 	logger.log("Sent file to client");
 // })
 
 
 webserver.get('/',(req, res) => {
-	res.sendFile(__dirname + "/src/website/");
-	// res.sendFile(__dirname + "/src/website/css/");
+	res.sendFile(`${src}/WebApp`);
+	// res.sendFile(__dirname + "/src/WebApp/css/");
 	logger.log("Sent file to client");
 })
 

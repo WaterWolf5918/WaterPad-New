@@ -46,6 +46,19 @@ function test(num){
 	console.log('test' + num);
 }
 
+
+function titlebar(button){
+	socket.emit('titlebar', button);
+}
+
+function exit(){
+	socket.emit('menu-close')
+}
+$('#Exit-button').click(function() {
+	console.log()
+});
+
+
 function picker(num2){
 	let socket = io('ws://localhost:65525');
 	socket.on('connect',() => {
