@@ -1,0 +1,86 @@
+<!-- 
+ █     █░ ▄▄▄     ▄▄▄█████▓▓█████  ██▀███   ██▓███   ▄▄▄      ▓█████▄ 
+ ▓█░ █ ░█░▒████▄   ▓  ██▒ ▓▒▓█   ▀ ▓██ ▒ ██▒▓██░  ██▒▒████▄    ▒██▀ ██▌
+ ▒█░ █ ░█ ▒██  ▀█▄ ▒ ▓██░ ▒░▒███   ▓██ ░▄█ ▒▓██░ ██▓▒▒██  ▀█▄  ░██   █▌
+ ░█░ █ ░█ ░██▄▄▄▄██░ ▓██▓ ░ ▒▓█  ▄ ▒██▀▀█▄  ▒██▄█▓▒ ▒░██▄▄▄▄██ ░▓█▄   ▌
+ ░░██▒██▓  ▓█   ▓██▒ ▒██▒ ░ ░▒████▒░██▓ ▒██▒▒██▒ ░  ░ ▓█   ▓██▒░▒████▓ 
+ ░ ▓░▒ ▒   ▒▒   ▓▒█░ ▒ ░░   ░░ ▒░ ░░ ▒▓ ░▒▓░▒▓▒░ ░  ░ ▒▒   ▓▒█░ ▒▒▓  ▒ 
+   ▒ ░ ░    ▒   ▒▒ ░   ░     ░ ░  ░  ░▒ ░ ▒░░▒ ░       ▒   ▒▒ ░ ░ ▒  ▒ 
+   ░   ░    ░   ▒    ░         ░     ░░   ░ ░░         ░   ▒    ░ ░  ░ 
+     ░          ░  ░           ░  ░   ░                    ░  ░   ░    
+                                                                ░       
+-->
+
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+    <head>
+		<link rel="stylesheet" href="./css/style2.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <title>WaterPad Desktop Edit Mode</title>
+		<div class="Menu-Bar">
+			<link rel="stylesheet" href="./css/titlebar.css">
+			<div class="titlebar"></div>
+			<div class="titlebar2"></div>
+			<div id="Exit-button" onclick="titlebar('exit')"></div>
+			<div id="Max-button" onclick="titlebar('max')"></div>
+			<div id="Min-button" onclick="titlebar('min')"></div>
+			<div id="Back-button" onclick="history.back()"></div>
+		</div>
+
+    </head>
+    <body>
+		
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+		<script src="./renderer.js"></script>
+        <h1 class="title1">WaterPad Edit Mode</h1>
+        <h3 id="title">Version <strong>0.2.0</strong></h3>
+
+
+        <div id="button-list" class="button-list">
+            <img src="http://localhost:65235/image/image-0.png" alt="1" class="button" id="btn" onclick="apple(0)">
+            <img src="http://localhost:65235/image/image-1.png" alt="2" class="button" onclick="apple(1)">
+            <img src="http://localhost:65235/image/image-2.png" alt="3" class="button" onclick="apple(2)">
+            <img src="http://localhost:65235/image/image-3.png" alt="4" class="button" onclick="apple(3)">
+            <img src="http://localhost:65235/image/image-4.png" alt="5" class="button" onclick="apple(4)">
+            <img src="http://localhost:65235/image/image-5.png" alt="6" class="button" onclick="apple(5)">
+            <img src="http://localhost:65235/image/image-6.png" alt="7" class="button" onclick="apple(6)">
+            <img src="http://localhost:65235/image/image-7.png" alt="8" class="button" onclick="apple(7)">
+            <img src="http://localhost:65235/image/image-8.png" alt="9" class="button" onclick="apple(8)">
+            <img src="http://localhost:65235/image/image-9.png" alt="10" class="button" onclick="apple(9)">
+			<img src="http://localhost:65235/image/back.png" alt="11" class="button" onclick="location.href='index.html'">
+        </div>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+		<div id="picker-button-list" class="hidden">
+			 <button class="picker-button" id="change-img" onclick="picker(1)">Change Image</button>
+			 <button class="picker-button" id="change-file" onclick="picker(2)">Change File</button>
+
+		</div>
+    </body>
+	
+</html>
+
+
+
+
+
+<!-- <script type="module">
+	import * as io from './socket.io.js';
+	const socket = io('ws://localhost:65525');
+	function apple(button) {
+	console.log(button);
+	socket.on('connect',() =>{
+	socket.send(`button${button}`);
+})}
+</script> -->
+
+
+
+

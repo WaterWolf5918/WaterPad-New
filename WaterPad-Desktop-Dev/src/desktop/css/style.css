@@ -26,18 +26,29 @@ body {
 	overflow: hidden;
 }
 
-.titlebar {
-	left: -1px;
-	top: 3px;
-	height: 22px;
-	width: 100%;
-	outline: 2px solid #2f3241;
-	background: linear-gradient(to bottom,var(--clr-gray300),var(--clr-gray400),var(--clr-gray500),var(--clr-gray600),var(--clr-gray700));
-	background-color: rgb(15, 15, 15);	
+#wlogo{
+	width: 50%;
+	height: 50%;
+	background-color: rgb(22, 22, 22);
+	display: flexbox;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: auto;
+}
 
-	position: fixed
-  }
+#Logo{
+	padding-left: 50%;
+	width: 95%;
+	height: 95%;
+	background-color: rgb(22, 22, 22);
+	display: flexbox;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: auto;
 
+}
 
 
 
@@ -50,7 +61,15 @@ button {
 }
 
 .menu-choice {
-	background-color: var(--clr-gray600);
+	background-color: var(--clr-gray500);
+	color: var(--clr-gray100);
+	display: flexbox;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: auto;
+
+	/* background-color: var(--clr-gray600);
 	border-radius: var(--radius);
 	display: flex;
 	flex-direction: row;
@@ -58,7 +77,7 @@ button {
 	align-items: center;
 	color: var(--clr-gray200);
 	padding: 0.5rem;
-	margin-bottom: 0.8rem;
+	margin-bottom: 0.8rem; */
 }
 
 .menu-choice img {
@@ -94,8 +113,15 @@ button {
 		top: 4rem;
 	}
 }  
-#server-info{
+
+
+#menu{
 	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	content: center;
+	justify-content: center;
+	align-items: center;
 }
 
 #showi{
@@ -107,5 +133,5 @@ button {
 	position: absolute;
 	align-items: right;
 	justify-content: right;
-	left: 20%;
+	left: 65%;
 }

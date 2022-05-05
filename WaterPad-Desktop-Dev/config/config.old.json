@@ -1,0 +1,22 @@
+{
+  "debug": true,
+  "files": [
+    "C:\\Users\\lucas\\AppData\\Local\\Programs\\balena-etcher\\balenaEtcher.exe",
+    "C:\\users\\lucas\\Desktop\\CurseForge.lnk",
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "FILE3",
+    "FILE4",
+    "C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe",
+    "FILE6",
+    "FILE7",
+    "FILE8",
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+  ],
+  "drun": true,
+  "file0": {
+    "obs-toggle": false,
+    "type": {
+      "1": true
+    }
+  }
+}

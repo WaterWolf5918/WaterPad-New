@@ -26,22 +26,20 @@
 
 	<body>
 		<h1 id="WaterPad-Text">WaterPad - #.#.#</h1>
-
+		<div id="wlogo">
+			<img id="Logo" class="show" src="image/WaterPad-Banner.png"onclick="location.href='help.html'"/>
+		</div>
+		
+		<!-- <img id="Logo" class="show" src="image/WaterPad-Banner.png"onclick="location.href='help.html'"/> -->
 		<div id="menu">
 			<div id="server-info">
-				<button class="server menu-choice" id="server-button">
-					<img id="server-img" class="show" src="image/image-2.png"/>
-					<p id="server-running">Server Info</p>
-				</button>
-				<div id="server-info-text" class="hidden">
-					<p id="server-info-text-1">Server IP:</p>
-					<p id="server-info-text-2">Server Port:</p>
-					<p id="server-info-text-3">Server Status:</p>
-				</div>
+
 			</div>
 
-
-
+			<button class="help menu-choice" id="help-button">
+				<img id="help-img" class="show" src="image/image-1.png"onclick="location.href='help.html'"/>
+				<p id="help-text" class="">Help</p>
+			</button>		
 
 
 
@@ -50,10 +48,17 @@
 				<p id="settings-text">Settings</p>
 			</button>
 
-			<button class="help menu-choice" id="help-button">
-				<img id="help-img" class="show" src="image/image-1.png"onclick="location.href='help.html'"/>
-				<p id="help-text" class="">Help</p>
+
+			<button class="server menu-choice" id="server-button">
+				<img id="server-img" class="show" src="image/image-2.png"/>
+				<p id="server-running">Server Info</p>
 			</button>
+			<div id="server-info-text" class="hidden">
+				<p id="server-info-text-1">Server IP:</p>
+				<p id="server-info-text-2">Server Port:</p>
+				<p id="server-info-text-3">Server Status:</p>
+			</div>
+			
 		</div>
 
 

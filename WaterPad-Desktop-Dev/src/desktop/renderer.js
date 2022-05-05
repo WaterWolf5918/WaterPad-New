@@ -1,5 +1,11 @@
 
 
+window.onload = function(){
+	localStorage.removeItem('server-info');
+}
+
+
+
 let socket = io('ws://localhost:65525');
 
 socket.on('connect', () => {
@@ -9,24 +15,18 @@ socket.on('connect', () => {
 	console.log(args);
 });
 });
-// const socket = test('ws://localhost:65525');
+
+
+socket.on('disconnect', () => {
+	  console.log('Disconnected from server');
+	  localStorage.removeItem('server-info');
+})
+
 
 let waterpadVersion = 'https://raw.githubusercontent.com/Nightowl2007W/WaterPad-New/main/WaterPad-Desktop-Dev/version.txt';
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-$('#server-button').click(function() {
-	doAction('server');
-});
-
-$('#settings-button').click(function() {
-	doAction('settings');
-
-});
-
-$('#help-button').click(function() {
-	doAction('help');
-});
 
 function apple(num){
 	document.getElementById('picker-button-list').classList.replace('hidden','show');
@@ -51,12 +51,8 @@ function titlebar(button){
 	socket.emit('titlebar', button);
 }
 
-function exit(){
-	socket.emit('menu-close')
-}
-$('#Exit-button').click(function() {
-	console.log()
-});
+
+
 
 
 function picker(num2){
@@ -65,6 +61,7 @@ function picker(num2){
 		switch(num2){
 			case 1:
 				socket.emit('newImage', picknum);
+				console.log(picknum)
 				document.getElementById('picker-button-list').classList.add('hidden');
 				document.getElementById('button-list').classList.replace('hidden','button-list');
 				break;
@@ -73,6 +70,9 @@ function picker(num2){
 				document.getElementById('picker-button-list').classList.add('hidden');
 				document.getElementById('button-list').classList.replace('hidden','button-list');
 				break;
+			case 3:
+				console.log('test')
+				socket.emit('obs-toggle',picknum)
 		}		
 	})
 
@@ -84,33 +84,36 @@ $( "#server-button" ).hover(
 	function() {
 		document.getElementById('server-info-text').classList.replace('hidden','showi');
 		serverInfo()
-	  console.log('hover');
 	}, function() {
 		document.getElementById('server-info-text').classList.replace('showi','hidden');
-	  console.log('hover out');
 	}
   );
 
 function serverInfo(){
 	let socket = io('ws://localhost:65525');
-	socket.on('connect',() => {
-		socket.emit('connected', 'Desktop Manager Editor[sevrer info]');
-		socket.emit('serverInfo');
-		socket.on('serverInfo',(data) => {
-			console.log(data)
-			document.getElementById('server-info-text-1').innerHTML = `Server IP: ${data.ip}`;
-			document.getElementById('server-info-text-2').innerHTML = `Server Port: ${data.port}`;
-			document.getElementById('server-info-text-3').innerHTML = `Server Version: ${data.status}`;
+	if (localStorage.getItem('server-info') == null){
+		socket.on('connect',() => {
+			socket.emit('connected', 'Desktop Manager Editor[sevrer info]');
+			socket.emit('serverInfo');
+			socket.on('serverInfo',(data) => {
+				console.log(data)
+				document.getElementById('server-info-text-1').innerHTML = `Server IP: ${data.ip}`;
+				document.getElementById('server-info-text-2').innerHTML = `Server Port: ${data.port}`;
+				document.getElementById('server-info-text-3').innerHTML = `Server Version: ${data.status}`;
+				localStorage.setItem('server-info', JSON.stringify(data));
+			})
 		})
-	})
-
+	}else{
+		let data = JSON.parse(localStorage.getItem('server-info'));
+		document.getElementById('server-info-text-1').innerHTML = `Server IP: ${data.ip}`;
+		document.getElementById('server-info-text-2').innerHTML = `Server Port: ${data.port}`;
+		document.getElementById('server-info-text-3').innerHTML = `Server Version: ${data.status}`;
+	}
 }
 
 
 
-$('server-img').hover(function() {
-	console.log('test')
-})
+
 
 function hellotest(num){
 	let socket = io('ws://localhost:65525');
@@ -120,21 +123,3 @@ function hellotest(num){
 	})
 }
 
-
-
-async function doAction(action) {
-	switch(action) {
-		case 'server':
-			socket.send('server info')
-		break;
-
-		case 'help':
-			// Set GUI to the help menu
-
-		break;
-		
-		case 'settings':
-			// Set GUI to settings :)
-		break;
-	}
-}

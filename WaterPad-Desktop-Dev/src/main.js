@@ -50,7 +50,7 @@ const { Server } = require('socket.io');
 const webserver = express();
 const logger = require(`${importsDir}Log4Water`);
 const linin = require(`${importsDir}linin`);
-
+//const OBS = require(`${importsDir}obsAPI`);
 
 var os = require('os');
 
@@ -70,6 +70,7 @@ nconf.use('file', { file:`${mainDir}config\\config.json` });
 // *** GET CONFIG *** \\
 const debug = nconf.get('debug');
 const port = nconf.get('port');
+console.log(nconf.get('file0'))
 console.log(debug)
 // *** INIT *** \\
 
@@ -98,10 +99,25 @@ io.on("connection", (socket) => {
 	});
 	socket.on('buttonClick', (data) => {
 		// logger.log(`got buttonClick: ${data}`);
-		logger.debug(`Num: ${JSON.stringify(data).valueOf()}`);
+		// logger.debug(`Num: ${JSON.stringify(data).valueOf()}`);
 		let num = JSON.stringify(data).valueOf();
-		var file = nconf.get(`files:${num}`);
-		spawn(file);
+		console.log(nconf.get(`usersettings:file${num}`))
+		if (nconf.get(`usersettings:file${num}:obs-toggle`)){
+			console.log(nconf.get(`usersettings:file${num}:obs-action`))
+			
+		}else{
+			console.log('false')
+			spawn(nconf.get(`usersettings:file${num}:filepath`))
+		}
+		
+
+
+
+
+
+
+		// var file = nconf.get(`files:${num}`);
+		// spawn(file);
 		// spzawn(`cmd.exe`,['/c','start' + '"' + file + '"']);
 	})
 

@@ -1,16 +1,56 @@
 {
   "debug": true,
-  "files": [
-    "C:\\Program Files (x86)\\Overwolf\\OverwolfLauncher.exe",
-    "C:\\users\\lucas\\Desktop\\CurseForge.lnk",
-    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-    "FILE3",
-    "FILE4",
-    "C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe",
-    "FILE6",
-    "FILE7",
-    "FILE8",
-    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
-  ],
-  "drun": true
+  "usersettings": {
+    "obs-actions": [],
+    "file0": {
+      "filepath": "C:\\Users\\lucas\\AppData\\Local\\Programs\\balena-etcher\\balenaEtcher.exe",
+      "obs-toggle": true,
+      "obs-action": "StartRecording"
+    },
+    "file1": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file2": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file3": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file4": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file5": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file6": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file7": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file8": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    },
+    "file9": {
+      "filepath": "",
+      "obs-toggle": false,
+      "obs-action": "null"
+    }
+  }
 }

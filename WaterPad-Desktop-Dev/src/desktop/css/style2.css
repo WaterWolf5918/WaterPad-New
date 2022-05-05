@@ -30,6 +30,26 @@ body {
 	display: flex;
 	margin-bottom: 5px;
 }
+
+#change-obs{
+	height: 55px;
+}
+
+
+
+
+.picker-checkbox{
+	background: linear-gradient(to bottom,rgb(255,255,255),rgb(175,175,175));
+	width: 38px;
+	height: 35px;
+	text-align: left;
+	justify-content: left;
+	font-size: larger;
+	left: -10px;
+	margin-bottom: 5px;
+}
+
+
 .picker-button:hover{
 	background: linear-gradient(to bottom,rgb(175,175,175),rgb(200,200,200));
 	transform: scale(1.05);

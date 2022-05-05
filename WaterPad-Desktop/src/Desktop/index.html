@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+	<head>
+		<title>WaterPad</title>
+		<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/titlebar.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<div class="Menu-Bar">
+			<link rel="stylesheet" href="./css/titlebar.css">
+			<div class="titlebar"></div>
+			<div class="titlebar2"></div>
+			<div id="Exit-button" onclick="titlebar('exit')"></div>
+			<div id="Max-button" onclick="titlebar('max')"></div>
+			<div id="Min-button" onclick="titlebar('min')"></div>
+			<div id="Back-button" onclick="history.back()"></div>
+		</div>
+
+
+
+		
+		<meta charset="UTF-8">
+	</head>
+
+	<body>
+		<h1 id="WaterPad-Text">WaterPad - #.#.#</h1>
+
+		<div id="menu">
+			<div id="server-info">
+				<button class="server menu-choice" id="server-button">
+					<img id="server-img" class="show" src="image/image-2.png"/>
+					<p id="server-running">Server Info</p>
+				</button>
+				<div id="server-info-text" class="hidden">
+					<p id="server-info-text-1">Server IP:</p>
+					<p id="server-info-text-2">Server Port:</p>
+					<p id="server-info-text-3">Server Status:</p>
+				</div>
+			</div>
+
+
+
+
+
+
+			<button class="setting menu-choice" id="settings-button">
+				<img id="settings-img" class="show" src="image/image-3.png" onclick="location.href='Blocks.html'">
+				<p id="settings-text">Settings</p>
+			</button>
+
+			<button class="help menu-choice" id="help-button">
+				<img id="help-img" class="show" src="image/image-1.png"onclick="location.href='help.html'"/>
+				<p id="help-text" class="">Help</p>
+			</button>
+		</div>
+
+
+
+
+
+
+
+
+		<!-- <div id='updateNote' class='hidden'>
+			<h3 onclick='closeUpdate()' id='x'>X</h3>
+			<h3 id='updateMsg'>There is a new version of WaterPad. </h3>
+			<div id='updatebutton' class="hidden">
+				<button id='updatebutton2' onclick="console.log('test')">Download</button>
+				
+			</div>
+		</div> -->
+
+		<!-- <script type="module" src="./linit.mjs"></script> -->
+		<script src="./renderer.js"></script>
+	</body>
+</html>

@@ -9,6 +9,7 @@
   "author": "WaterWolf5918",
   "license": "MIT",
   "dependencies": {
-    "obs-websocket-js": "^4.0.3"
+    "obs-websocket-js": "^4.0.3",
+    "prompt-sync": "^4.2.0"
   }
 }
