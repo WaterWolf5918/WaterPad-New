@@ -1,56 +1,70 @@
 {
   "debug": true,
+  "obs-actions": [
+    "ToggleRecording",
+    "sceneSwitch"
+  ],
   "usersettings": {
     "obs-actions": [],
     "file0": {
       "filepath": "C:\\Users\\lucas\\AppData\\Local\\Programs\\balena-etcher\\balenaEtcher.exe",
       "obs-toggle": true,
-      "obs-action": "StartRecording"
+      "obs-action": "sceneSwitch",
+      "obs-arg": "cam"
     },
     "file1": {
-      "filepath": "",
-      "obs-toggle": false,
-      "obs-action": "null"
+      "filepath": "null",
+      "obs-toggle": true,
+      "obs-action": "sceneSwitch",
+      "obs-arg": "music"
     },
     "file2": {
-      "filepath": "",
-      "obs-toggle": false,
-      "obs-action": "null"
+      "filepath": "null",
+      "obs-toggle": true,
+      "obs-action": "sceneSwitch",
+      "obs-arg": "desktop"
     },
     "file3": {
-      "filepath": "",
-      "obs-toggle": false,
-      "obs-action": "null"
+      "filepath": "null",
+      "obs-toggle": true,
+      "obs-action": "ToggleRecording",
+      "obs-arg": "null"
     },
     "file4": {
       "filepath": "",
       "obs-toggle": false,
-      "obs-action": "null"
+      "obs-action": "null",
+      "obs-arg": "null"
     },
     "file5": {
       "filepath": "",
       "obs-toggle": false,
-      "obs-action": "null"
+      "obs-action": "null",
+      "obs-arg": "null"
     },
     "file6": {
       "filepath": "",
       "obs-toggle": false,
-      "obs-action": "null"
+      "obs-action": "null",
+      "obs-arg": "null"
     },
     "file7": {
       "filepath": "",
       "obs-toggle": false,
-      "obs-action": "null"
+      "obs-action": "null",
+      "obs-arg": "null"
     },
     "file8": {
       "filepath": "",
       "obs-toggle": false,
-      "obs-action": "null"
+      "obs-action": "null",
+      "obs-arg": "null"
     },
     "file9": {
       "filepath": "",
       "obs-toggle": false,
-      "obs-action": "null"
+      "obs-action": "null",
+      "obs-arg": "null"
     }
   }
 }

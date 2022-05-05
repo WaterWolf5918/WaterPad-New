@@ -40,6 +40,12 @@ console.log(`\u001b[37;1mSorceDir \u001b[32mOK\u001b[37;1m |\u001b[36m${src}\u00
 
 
 //init
+const { OBSLibrary } = require(`${importsDir}obsAPI`);
+
+
+
+
+
 
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const { exec, spawn } = require('child_process');
@@ -50,6 +56,7 @@ const { Server } = require('socket.io');
 const webserver = express();
 const logger = require(`${importsDir}Log4Water`);
 const linin = require(`${importsDir}linin`);
+const obs = new OBSLibrary(`${mainDir}scripts/obs/`);
 //const OBS = require(`${importsDir}obsAPI`);
 
 var os = require('os');
@@ -104,7 +111,16 @@ io.on("connection", (socket) => {
 		console.log(nconf.get(`usersettings:file${num}`))
 		if (nconf.get(`usersettings:file${num}:obs-toggle`)){
 			console.log(nconf.get(`usersettings:file${num}:obs-action`))
-			
+			obs.loadScripts()
+			if (obs.isScript(nconf.get(`usersettings:file${num}:obs-action`))){
+				logger.log(`${nconf.get(`usersettings:file${num}:obs-action`)} is loaded`)
+				obs.runScriptFromName(nconf.get(`usersettings:file${num}:obs-action`), nconf.get(`usersettings:file${num}:obs-arg`))
+			}else{
+				logger.error(`${nconf.get(`usersettings:file${num}:obs-action`)} is not loaded Maybe you miss spelled the name`)
+			}
+			// obs.runScriptFromName('ToggleRecording', (...args) => {
+			// 	console.log('ToggleRecor ding', ...args)
+			// })
 		}else{
 			console.log('false')
 			spawn(nconf.get(`usersettings:file${num}:filepath`))

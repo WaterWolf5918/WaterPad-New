@@ -2,10 +2,10 @@ const OBSWebSocket = require('obs-websocket-js');
 const obs = new OBSWebSocket();
 
 module.exports = {
-	name: 'ToggleRecording',
-	cb: (nul, callback) => {
+	name: 'startRecording',
+	cb: (callback) => {
 		obs.connect().then(() => {
-			obs.send('StartStopRecording')
+			obs.send('StartRecording')
 			.then((data) => {
 				callback(data);
 			})

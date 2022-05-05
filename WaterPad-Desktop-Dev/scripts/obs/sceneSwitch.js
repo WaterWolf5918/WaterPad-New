@@ -2,10 +2,12 @@ const OBSWebSocket = require('obs-websocket-js');
 const obs = new OBSWebSocket();
 
 module.exports = {
-	name: 'ToggleRecording',
-	cb: (nul, callback) => {
+	name: 'sceneSwitch',
+	cb: (scene, callback) => {
 		obs.connect().then(() => {
-			obs.send('StartStopRecording')
+			obs.send('SetCurrentScene', {
+				"scene-name": scene
+			})
 			.then((data) => {
 				callback(data);
 			})
@@ -13,7 +15,6 @@ module.exports = {
 				callback(err);
 			})
 			obs.disconnect();
-		})
+		});
 	}
-};
-
+}
