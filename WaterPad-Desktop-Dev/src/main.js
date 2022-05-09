@@ -240,8 +240,9 @@ app.whenReady().then(() => {
 					let file = JSON.stringify(result.filePaths[0])
 					let file2 = file.replace(/\\\\/g, '/');
 					logger.debug(`New File Path: ${file2.toString()}`)
-					
-					nconf.set(`files:${data}`,result.filePaths[0]);
+					console.log(data) //data is the number of the file logger.log(`${nconf.get(`usersettings:file${num}:obs-action`)} is loaded`)
+					nconf.set(`usersettings:file${data}:filepath`, result.filePaths[0])
+					// nconf.set(`files:${data}`,result.filePaths[0]);
 					linin.saveJSON()
 				}
 			  }).catch(err => {
