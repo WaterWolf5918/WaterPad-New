@@ -4,7 +4,7 @@ Made by: WaterWolf5918
 
 If you have any questions, Please feel free to join the [Discord](https://discord.gg/DYsdj72CSm)
 
-[Youtube](https://www.youtube.com/channel/UCY-1AjoxZ-Fd0aEnKEanO_w)
+[Youtube](https://www.youtube.com/channel/UCY-1AjoxZ-Fd0aEnKEanO_w) [Discord](https://discord.gg/DYsdj72CSm)
 
 --People that helped--
 
