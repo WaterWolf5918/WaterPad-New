@@ -12,3 +12,5 @@ Thanks to [Legotronforce](https://github.com/LegotronForce) For Helping with the
 
 Thanks to [PoweyDev](https://github.com/PoweyDev) For The app icon and creating soical media
 
+Don't expect any bug fixes right now
+This is going to get a full rewrite at some point in the coming days / weeks
