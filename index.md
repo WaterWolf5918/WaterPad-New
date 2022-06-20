@@ -1,4 +1,7 @@
-## Welcome to GitHub Pages
+# Welcome to WaterPad DevBlog
 
-#First Post
-Welcome to the new dev blog for WaterPad.
+## [0] The First Post  
+##### Welcome to the new dev blog for WaterPad.
+
+##### This is going to be where I post stuff im adding / working on.
+Thanks And Goodbye -WaterWolf5918
