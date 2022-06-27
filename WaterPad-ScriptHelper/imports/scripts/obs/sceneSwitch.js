@@ -3,6 +3,7 @@ const obs = new OBSWebSocket();
 
 module.exports = {
 	name: 'sceneSwitch',
+	obs: true,
 	cb: (scene, callback) => {
 		obs.connect().then(() => {
 			obs.send('SetCurrentScene', {

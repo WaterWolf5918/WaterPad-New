@@ -3,7 +3,8 @@ const obs = new OBSWebSocket();
 
 module.exports = {
 	name: 'startRecording',
-	cb: (nul,callback) => {
+	obs: true,
+	cb: (callback) => {
 		obs.connect().then(() => {
 			obs.send('StartRecording')
 			.then((data) => {
