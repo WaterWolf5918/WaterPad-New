@@ -1,0 +1,39 @@
+body {
+	background-color: rgb(0, 0, 0); color:rgb(255, 255, 255);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+button-list{
+	min-width: 125px;
+	min-height: 125px;
+	width: auto;
+	height: auto;
+	max-width: 128px;
+	max-height: 128px;
+	margin-left: 25;
+	margin-right: 25;
+	margin-top: 25;
+}
+
+
+
+.button {
+	max-width: 248px;
+	max-height: 128px;
+	min-width: 125px;
+	min-height: 125px;
+	width: auto;
+	height: auto;
+
+	margin-left: 25;
+	margin-right: 25;
+	margin-top: 25;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}

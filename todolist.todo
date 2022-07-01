@@ -1,9 +1,3 @@
-Done:
-	✔ merge WaterPad dev and normal branch @done(22-05-09 10:49)
-
-
-
-
 
 Low Proiority:
 	☐ make a bettter gui | GUI v3
@@ -11,12 +5,13 @@ Low Proiority:
 High Priority:
 	☐ add obs web sockets password support
 	☐ add more scripts to OBSlib
-	☐ try to get porgram not to get detected as a virus | might need to report as false positive | file system edits are stupid in nodejs
-
-
 
 Long Term:
 	☐ add encripion to web sockets
-	☐ convert to rust replace electron with tauri
 	☐ Make Code More Stable
 	☐ Add a password system @started(22-05-09 10:49)
+
+Archive:
+  ✘ try to get program not to get detected as a virus | might need to report as false positive | file system edits are stupid in nodejs // i think this might only be a problem for norton @cancelled(22-07-01 17:21) @project(High Priority)
+  ✔ merge WaterPad dev and normal branch @done(22-05-09 10:49) @project(Done)
+  ✘ convert to rust replace electron with tauri @cancelled(22-07-01 17:19) @project(Long Term)

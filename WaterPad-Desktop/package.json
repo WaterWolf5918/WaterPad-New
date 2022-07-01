@@ -22,7 +22,9 @@
   "homepage": "https://github.com/WaterWolf5918/WaterPad-New#readme",
   "dependencies": {
     "chalk": "^5.0.1",
-    "electon": "^0.0.1-security",
-    "express": "^4.18.1"
-  }
+    "electron": "^19.0.7",
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
+  },
+  "type": "module"
 }
