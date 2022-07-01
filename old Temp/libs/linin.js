@@ -6,6 +6,10 @@ const nconf = require('nconf')
  * @param {number} errorCode The error code of the error (ex. `90`)
  * @param {boolean} clear Clears the screen with true does nothing with false
  */
+
+
+
+
 function outputError(error, errorCode, clear) {
 	if(clear) { logger.clear(); }
 	logger.error("==== Error ====");

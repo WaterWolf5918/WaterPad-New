@@ -62,7 +62,6 @@ const obs = new OBSLibrary(`${mainDir}scripts/obs/`);
 var os = require('os');
 
 const networkInterfaces = os.networkInterfaces();
-
 if (networkInterfaces.Ethernet[1].address){
 	global.ip = networkInterfaces.Ethernet[1].address;
 }else{global.ip = networkInterfaces['Wi-Fi'][1].address}
