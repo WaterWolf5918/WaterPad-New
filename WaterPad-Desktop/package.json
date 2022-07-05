@@ -4,7 +4,8 @@
   "description": "WaterPad is a app that lets you control your applications. Currently in development.",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,8 @@
   },
   "homepage": "https://github.com/WaterWolf5918/WaterPad-New#readme",
   "dependencies": {
-    "chalk": "^5.0.1",
     "electron": "^19.0.7",
     "express": "^4.18.1",
     "socket.io": "^4.5.1"
-  },
-  "type": "module"
+  }
 }

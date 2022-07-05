@@ -1,20 +1,29 @@
 // Imports \\
-import * as electron from "electron";
-import express from "express";
-import * as http from "http";
-import { Server } from "socket.io";
-import chalk from "chalk";
-import path from "path";
-import { fileURLToPath } from 'node:url';
-
+const electron = require('electron')
+const express = require("express")
+const http = require("http")
+const { Server } = require("socket.io")
+const path = require("path")
+const { fstat } = require('fs')
+const { Log4Water,colors } = require(path.join(__dirname,"imports/Log4Water.js"))
+const fs = require('fs')
+const config2 = require('./config.json')
 // Imports \\
 
 
 // Variables \\
-const port = 4000;
-const debug = true;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const config = {
+	"port": 4000,
+	"debug": true,
+	"blocks": 100
+}
+
+
+const port = config.port;
+const debug = config.debug;
+//--------------------\\
+
+const logger = new Log4Water('test')
 const webserver = express();
 const server = http.Server(webserver);
 const io = new Server(server,{  cors: {origin: "*",methods: "*"}});
@@ -37,7 +46,29 @@ webserver.all('/*', function(req, res, next) {
 // Socket.io \\
 io.on('connection', (socket) => {
 	console.log('a user connected');
+	socket.on('blocks', (data) =>{
+		console.log('[Socket-Event] blocks called')
+		socket.emit('blocks',config.blocks)
+		console.log('[Socket-Event] blocks handled')
+	});
+
+	socket.on('checkImage', (image) => {
+		const actualPath = path.join(__dirname,`WebApp/image/image-${image}.png`)
+		if (fs.existsSync(actualPath)){
+			socket.emit('ImageGood',image)
+			console.log(`${actualPath} : True`)
+		}else{
+			socket.emit('ImageBad',image)
+			console.log(`${actualPath} : False`)
+		}
+	});
 })
+
+
+
+
+
+
 // Socket.io \\
 
 
@@ -45,7 +76,8 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
 	console.log(`Server listening on port ${port}`);
 })
-
-console.log(server);
+if (config2.usersettings.file9){
+	console.log(true)
+}else{console.log(false)}
 console.log(__dirname)
-console.log()
+
