@@ -1,4 +1,4 @@
-#WaterPad is a app that lets you control your applications. Currently in development.
+# WaterPad is a app that lets you control your applications. Currently in development.
 
 Made by: WaterWolf5918
 
