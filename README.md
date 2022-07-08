@@ -7,9 +7,9 @@ A app that lets you control your pc from your phone.
 
 Made by:[WaterWolf5918](https://github.com/WaterWolf5918)
 
-Thanks to [Legotronforce](https://github.com/LegotronForce) For Helping with the code
+Thanks to [Legotronforce](https://github.com/LegotronForce) for helping with the code
 
-Thanks to [PoweyDev](https://github.com/PoweyDev) For The app icon and creating soical media
+Thanks to [PoweyDev](https://github.com/PoweyDev) for the app icon and creating soical media
 
 
 ## Future Plans
