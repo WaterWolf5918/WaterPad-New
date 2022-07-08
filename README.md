@@ -12,3 +12,10 @@ Thanks to [Legotronforce](https://github.com/LegotronForce) For Helping with the
 Thanks to [PoweyDev](https://github.com/PoweyDev) For The app icon and creating soical media
 
 
+## Future Plans
+- better gui 
+- make a sound player
+- add play pause button
+
+## How To Build
+**Coming Soon**
