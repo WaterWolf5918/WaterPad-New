@@ -1,47 +1,47 @@
 const nconf = require('nconf');
 const fs = require('fs');
 const chalk = require('chalk');
-const { OBSLibrary } = require('./obsAPI.js');
+// const { OBSLibrary } = require('./obsAPI.js');
 const path = require('path');
-const obsLib = new OBSLibrary(path.join(__dirname, 'scripts'));
+// const obsLib = new OBSLibrary(path.join(__dirname, 'scripts'));
 
-class configManager {
-	constructor(configFile) {
-		this.configFile = configFile;
-		this.config = nconf.get('config');
-		this.chalk = chalk;
-	}
-	checkConfig() {
-		if (fs.existsSync(this.configFile)) {
-			return true;
-		} else {
-			this.createConfig(this.configFile);
-			return false;
+// class configManager {
+// 	constructor(configFile) {
+// 		this.configFile = configFile;
+// 		this.config = nconf.get('config');
+// 		this.chalk = chalk;
+// 	}
+// 	checkConfig() {
+// 		if (fs.existsSync(this.configFile)) {
+// 			return true;
+// 		} else {
+// 			this.createConfig(this.configFile);
+// 			return false;
 
-		}
+// 		}
 
-	}
-	createConfig(filename){
-		let config = {
-			"debug": false,
-			"port": 4000,
-			"blocks": 100,
-			"obsactions":[],
-			"actions": [],
-			"usersettings": {}
-		}
-		obsLib.loadScripts();
-		let temp_obs = obsLib.scripts
-		for(let i=0;i<temp_obs.length;i++){
-			if(obsLib.isOBSScript(temp_obs[i].name)){
-				config.obsactions.push(temp_obs[i].name)
-			}else{
-				config.actions.push(temp_obs[i].name)
-			}
-		}
-		console.log(config)
-	}
-}
+// 	}
+// 	createConfig(filename){
+// 		let config = {
+// 			"debug": false,
+// 			"port": 4000,
+// 			"blocks": 100,
+// 			"obsactions":[],
+// 			"actions": [],
+// 			"usersettings": {}
+// 		}
+// 		obsLib.loadScripts();
+// 		let temp_obs = obsLib.scripts
+// 		for(let i=0;i<temp_obs.length;i++){
+// 			if(obsLib.isOBSScript(temp_obs[i].name)){
+// 				config.obsactions.push(temp_obs[i].name)
+// 			}else{
+// 				config.actions.push(temp_obs[i].name)
+// 			}
+// 		}
+// 		console.log(config)
+// 	}
+// }
 
 
 
@@ -112,5 +112,5 @@ module.exports = {
     getStackTrace,
     saveJSON,
 	getIP,
-	configManager
+	// configManager
 }

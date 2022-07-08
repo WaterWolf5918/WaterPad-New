@@ -1,10 +1,16 @@
 const hostname = self.location.hostname;
 const socket = io(`ws://${hostname}:4000`,{
-	reconnectionAttempts : 2,
+	reconnectionAttempts : 30,
 	reconnectionDelay : 259,
 });
 
 socket.on('connect', () => { socket.emit('connected', 'Client'); });
+socket.on('webRefresh', () => { 
+console.log('[Socket] Got Refresh Packet')
+socket.emit('webRefresh','ok')
+location.reload()
+})
+
 window.onload = function() { webBuildBlocks(); }
 
 
@@ -24,20 +30,21 @@ function webBuildBlocks() {
 	socket.emit('blocks');
 	socket.on('blocks',(data) =>{
 		const blocks = data;
-		console.log(blocks);
 		for(let i=0;i<blocks;i++) {
-			console.log(`${i}: ${blocks-1}`);
 			socket.emit('checkImage',`${i}`);
 		}
 	})
+	let list = {bad:[],good:[]}
+
 	socket.on('ImageGood',(image) => {
-		console.log(`${image} : Good`)
+		list.good.push(`${image} [Good]`)
 		appendBlock(image)
 	})
 	socket.on('ImageBad',(image) => {
-		console.log(`${image} : Bad`)
+		list.good.push(`${image} [Bad]`)
 		appendBlock('_f')
 	})
+	console.log(list)
 }
 
 socket.on('disconnect',() => { console.error('Socket disconnected'); });
