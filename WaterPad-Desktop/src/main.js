@@ -7,20 +7,29 @@ const path = require("path")
 const { fstat } = require('fs')
 const { Log4Water,colors } = require(path.join(__dirname,"imports/Log4Water.js"))
 const fs = require('fs')
-const config2 = require('./config.json')
+const nconf = require('nconf')
+nconf.use('file', { file: `${path.join(__dirname,'../','settings.json')}` });
 // Imports \\
 
 
 // Variables \\
-const config = {
-	"port": 4000,
-	"debug": true,
-	"blocks": 100
-}
+let basicSettings = require('../settings.json')
 
 
-const port = config.port;
-const debug = config.debug;
+
+setInterval(() => {
+	nconf.load()
+	console.debug(`${nconf.get('blocks')} | ${blocksStart}`)
+	if(nconf.get('blocks') !== blocksStart){
+		console.log('blocks changed')
+	}
+}, 1000);
+
+
+
+const blocksStart = nconf.get('blocks')		
+const port = basicSettings.port;
+const debug = basicSettings.debug;
 //--------------------\\
 
 const logger = new Log4Water('test')
@@ -48,7 +57,7 @@ io.on('connection', (socket) => {
 	console.log('a user connected');
 	socket.on('blocks', (data) =>{
 		console.log('[Socket-Event] blocks called')
-		socket.emit('blocks',config.blocks)
+		socket.emit('blocks',basicSettings.blocks)
 		console.log('[Socket-Event] blocks handled')
 	});
 
@@ -73,11 +82,8 @@ io.on('connection', (socket) => {
 
 
 // After Init\\
-server.listen(port, () => {
+server.listen(basicSettings.port, () => {
 	console.log(`Server listening on port ${port}`);
 })
-if (config2.usersettings.file9){
-	console.log(true)
-}else{console.log(false)}
-console.log(__dirname)
+
 
