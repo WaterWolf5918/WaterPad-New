@@ -1,5 +1,5 @@
 # WaterPad | Rewrite Branch
-A app that lets you control your applications. Currently in development.
+A app that lets you control your pc from your phone.
 
 [Youtube](https://www.youtube.com/channel/UCY-1AjoxZ-Fd0aEnKEanO_w) | [Discord](https://discord.gg/DYsdj72CSm) | [Dev Blog](https://waterwolf5918.github.io/WaterPad-New/)
 
