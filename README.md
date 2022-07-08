@@ -1,4 +1,4 @@
-#WaterPad
+# WaterPad
 A app that lets you control your applications. Currently in development.
 -Rewrite Branch
 
