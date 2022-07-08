@@ -19,3 +19,6 @@ Thanks to [PoweyDev](https://github.com/PoweyDev) For The app icon and creating 
 
 ## How To Build
 **Coming Soon**
+
+### Other
+For help feel free to join the [Discord](https://discord.gg/DYsdj72CSm).
