@@ -1,12 +1,9 @@
 # WaterPad
 A app that lets you control your applications. Currently in development.
 -Rewrite Branch
-
-
-If you have any questions, Please feel free to join the [Discord](https://discord.gg/DYsdj72CSm)
 [Youtube](https://www.youtube.com/channel/UCY-1AjoxZ-Fd0aEnKEanO_w) | [Discord](https://discord.gg/DYsdj72CSm) | [Dev Blog](https://waterwolf5918.github.io/WaterPad-New/)
 
---People That Worked On The Project--
+## People That Worked On The Project
 
 Made by:[WaterWolf5918](https://github.com/WaterWolf5918)
 
