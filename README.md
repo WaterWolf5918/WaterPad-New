@@ -24,3 +24,4 @@ Thanks to [PoweyDev](https://github.com/PoweyDev) For The app icon and creating 
 For help feel free to join the [Discord](https://discord.gg/DYsdj72CSm).
 
 No bug fixes for a bit well this project gets rewriten.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CrYbfB4LWcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
