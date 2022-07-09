@@ -25,8 +25,3 @@ For help feel free to join the [Discord](https://discord.gg/DYsdj72CSm).
 
 No bug fixes for a bit well this project gets rewriten.
 
-    <iframe width="560" height="315"
-src="https://www.youtube.com/embed/CrYbfB4LWcc" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
