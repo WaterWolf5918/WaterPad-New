@@ -25,4 +25,4 @@ For help feel free to join the [Discord](https://discord.gg/DYsdj72CSm).
 
 No bug fixes for a bit well this project gets rewriten.
 
-https://www.youtube.com/embed/CrYbfB4LWcc
+https://youtu.be/CrYbfB4LWcc
