@@ -20,6 +20,7 @@ function appendBlock(i){
 	b1.setAttribute('src',`image/image-${i}.png`); // sets the images element src
 	b1.setAttribute('alt',i); 					// sets the images element alt
 	b1.setAttribute('class','button'); 			// sets the images element class
+	b1.setAttribute('onclick',`ButtonPress(${i})`); // sets the images element onclick
 	buttonList.appendChild(b1); 				//appends image to button list
 }
 
@@ -58,3 +59,8 @@ function apple(button) {
 		socket.destroy();
 	});
 };
+
+function ButtonPress(button) {
+	console.log(button);
+	socket.emit('buttonPress', button);
+}

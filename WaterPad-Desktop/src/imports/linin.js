@@ -4,44 +4,64 @@ const chalk = require('chalk');
 // const { OBSLibrary } = require('./obsAPI.js');
 const path = require('path');
 // const obsLib = new OBSLibrary(path.join(__dirname, 'scripts'));
+const { ScriptAPI } = require('./ScriptAPI.js');
+const scriptLib = new ScriptAPI(path.join(__dirname, 'scripts'));
+nconf.use('file', { file: `${path.join(__dirname,'../../','settings.json')}` });
+class configManager {
+	constructor(configFile) {
+		this.configFile = configFile;
+		this.config = nconf.get('config');
+		this.chalk = chalk;
+	}
+	checkConfig() {
+		if (fs.existsSync(this.configFile)) {
+			console.log(this.chalk.green(`Config file found |${this.configFile}|`));
+			nconf.use('file', { file: `${this.configFile}` });
+			scriptLib.loadScripts();
+			let temp_obs = scriptLib.scripts
+			let obsactions = []
+			let actions = []
+			for(let i=0;i<temp_obs.length;i++){
+				if(scriptLib.isOBSScript(temp_obs[i].name)){
+					obsactions.push(temp_obs[i].name)
+				}else{
+					actions.push(temp_obs[i].name)
+				}
+			}
+			console.log(obsactions)
+			console.log(actions)
+			nconf.set('obsactions',obsactions);
+			nconf.set('actions',actions);
+			nconf.save();
+			return true;
+		} else {
+			this.createConfig(this.configFile);
+			return false;
+		}
 
-// class configManager {
-// 	constructor(configFile) {
-// 		this.configFile = configFile;
-// 		this.config = nconf.get('config');
-// 		this.chalk = chalk;
-// 	}
-// 	checkConfig() {
-// 		if (fs.existsSync(this.configFile)) {
-// 			return true;
-// 		} else {
-// 			this.createConfig(this.configFile);
-// 			return false;
-
-// 		}
-
-// 	}
-// 	createConfig(filename){
-// 		let config = {
-// 			"debug": false,
-// 			"port": 4000,
-// 			"blocks": 100,
-// 			"obsactions":[],
-// 			"actions": [],
-// 			"usersettings": {}
-// 		}
-// 		obsLib.loadScripts();
-// 		let temp_obs = obsLib.scripts
-// 		for(let i=0;i<temp_obs.length;i++){
-// 			if(obsLib.isOBSScript(temp_obs[i].name)){
-// 				config.obsactions.push(temp_obs[i].name)
-// 			}else{
-// 				config.actions.push(temp_obs[i].name)
-// 			}
-// 		}
-// 		console.log(config)
-// 	}
-// }
+	}
+	createConfig(filename){
+		let config = {
+			"debug": false,
+			"port": 4000,
+			"blocks": 10,
+			"obsactions":[],
+			"actions": [],
+			"appSettings": {}
+		}
+		scriptLib.loadScripts();
+		let temp_obs = scriptLib.scripts
+		for(let i=0;i<temp_obs.length;i++){
+			if(scriptLib.isOBSScript(temp_obs[i].name)){
+				config.obsactions.push(temp_obs[i].name)
+			}else{
+				config.actions.push(temp_obs[i].name)
+			}
+		}
+		console.log(config)
+		fs.writeFileSync(filename,JSON.stringify(config,null,2));
+	}
+}
 
 
 
@@ -72,15 +92,15 @@ function getStackTrace() {
     return obj.stack;
 };
 
-function saveJSON(){
-    console.log("Saving JSON File","JSON")
-	try{
-		nconf.save()
-		console.log("Saved JSON","JSON")
-	}catch (error){
-		outputError('CannotSaveJSON', 85, false);
-	}
-}
+// function saveJSON(){
+//     console.log("Saving JSON File","JSON")
+// 	try{
+// 		nconf.save()
+// 		console.log("Saved JSON","JSON")
+// 	}catch (error){
+// 		outputError('CannotSaveJSON', 85, false);
+// 	}
+// }
 
 
 function getIP() {
@@ -110,7 +130,6 @@ function getIP() {
 module.exports = {
     outputError,
     getStackTrace,
-    saveJSON,
 	getIP,
-	// configManager
+	configManager
 }

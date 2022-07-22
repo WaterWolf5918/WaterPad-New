@@ -23,7 +23,7 @@
 			"oneClick": false,
 			"runAfterFinish": false,
 			"allowToChangeInstallationDirectory": true,
-			"installerHeader": "build\\icon.ico"
+			"installerHeader": "build\\WaterPad Logo Blender.png"
 		}
 	},
 	"author": "WaterWolf5918",

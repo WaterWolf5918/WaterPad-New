@@ -1,5 +1,25 @@
 {
-	"port": 4000,
-	"debug": true,
-	"blocks": 25
+  "debug": false,
+  "port": 4000,
+  "blocks": 10,
+  "obsactions": [
+    "sceneSwitch",
+    "startRecording",
+    "ToggleRecording"
+  ],
+  "actions": [
+    "test"
+  ],
+  "buttons": {
+    "button=0": {
+      "script-toggle": true,
+      "filepath": "C:\\Users\\lucas\\AppData\\Local\\Programs\\balena-etcher\\balenaEtcher.exe",
+      "script": "test",
+      "script-args": []
+    },
+    "button=1": {
+      "script-toggle": false,
+      "filepath": "notepad.exe"
+    }
+  }
 }

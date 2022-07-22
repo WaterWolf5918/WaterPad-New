@@ -1,13 +1,15 @@
-const OBSWebSocket = require('obs-websocket-js');
+
+const OBSWebSocket = require('obs-websocket-js').default;
+
 const obs = new OBSWebSocket();
 
 module.exports = {
 	name: 'sceneSwitch',
 	obs: true,
-	cb: (scene, callback) => {
+	cb: (args, callback) => {
 		obs.connect().then(() => {
 			obs.send('SetCurrentScene', {
-				"scene-name": scene
+				"scene-name": args[0]
 			})
 			.then((data) => {
 				callback(data);

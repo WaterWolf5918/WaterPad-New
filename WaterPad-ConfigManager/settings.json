@@ -1,0 +1,14 @@
+{
+  "debug": false,
+  "port": 4000,
+  "blocks": 10,
+  "obsactions": [
+    "sceneSwitch",
+    "startRecording",
+    "ToggleRecording"
+  ],
+  "actions": [
+    "test"
+  ],
+  "appSettings": {}
+}

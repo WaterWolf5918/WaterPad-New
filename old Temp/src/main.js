@@ -180,7 +180,7 @@ const createWindow = function() {
   	});
 
 	mainWindow.loadFile(`${src}/desktop/index.html`);
-	mainWindow.setIcon(`${mainDir}/build/icon.ico`);
+	mainWindow.setIcon(`${mainDir}/build/WaterPad Logo Blender.png`);
 	// if(debug) {
 	// 	mainWindow.webContents.openDevTools();
 	// };

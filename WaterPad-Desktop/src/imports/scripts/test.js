@@ -1,8 +1,9 @@
-const OBSWebSocket = require('obs-websocket-js');
+
 module.exports = {
 	name: 'test',
 	obs: false,
-	cb: (callback) => {
+	cb: (args,callback) => {
 		console.log('it works')
+		console.log(args)
 	}
 }
